@@ -18,7 +18,7 @@ export default Ember.Component.extend({
     collectImageUrls: function (links) {
         var self = this;
 
-        links.each(function (index, link) {
+        links.each(function () {
             var url = Ember.$(this).attr('href');
 
             Ember.$.ajax({

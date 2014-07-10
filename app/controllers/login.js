@@ -1,10 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    needs: ['connection'],
+    needs: ['connection', 'preferences'],
 
     server: 'irc.freenode.net',
     username: null,
+    channels: '',
 
     connecting: false,
 
@@ -13,12 +14,16 @@ export default Ember.Controller.extend({
             var self = this;
             var server = this.get('server');
             var username = this.get('username');
+            var channels = this.get('channels');
+
+            var channelsArr = channels.split(',');
 
             var connection = this.get('controllers.connection');
 
             connection.setProperties({
                 server: server,
-                username: username
+                username: username,
+                defaultChannels: channelsArr
             });
 
             this.set('connecting', true);

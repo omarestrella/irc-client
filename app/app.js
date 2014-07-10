@@ -7,14 +7,6 @@ Function.prototype.listener = function (event) {
     return this;
 };
 
-localforage.config({
-    name        : 'irc',
-    version     : 1.0,
-    size        : 4980736, // Size of database, in bytes. WebSQL-only for now.
-    storeName   : 'irc',
-    description : 'IRC storage'
-});
-
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 var App = Ember.Application.extend({

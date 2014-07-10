@@ -13,7 +13,7 @@ grunt.initConfig({
         moveNodeModules: {
             command: function () {
                 var modules = package['browserModules'];
-                var cmdPattern = 'rsync -aqR node_modules/{lib} dist/'
+                var cmdPattern = 'rsync -aqR node_modules/{lib} dist/';
                 var cmdList = ['mkdir -p dist/node_modules'];
                 for (var i = 0; i < modules.length; i++) {
                     cmdList.push(cmdPattern.replace(/\{lib\}/gi, modules[i]));
@@ -37,7 +37,7 @@ grunt.initConfig({
             mac: true,
             win: false,
             linux32: false,
-            linux64: false
+            linux64: true
         },
         src: ['./dist/**/*']
     }

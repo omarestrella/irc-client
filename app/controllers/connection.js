@@ -13,8 +13,11 @@ if (requireNode) {
 }
 
 export default Ember.Controller.extend(EventMixin, {
+    needs: ['preferences'],
+
     server: null,
     username: null,
+    defaultChannels: null,
 
     client: null,
 
@@ -34,9 +37,10 @@ export default Ember.Controller.extend(EventMixin, {
     connectToServer: function () {
         var server = this.get('server');
         var username = this.get('username');
+        var defaultChannels = this.get('defaultChannels');
 
         var client = new irc.Client(server, username, {
-            channels: ['#thebestfriendsgang'],
+            channels: defaultChannels,
             autoConnect: false
         });
 
