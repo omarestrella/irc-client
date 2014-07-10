@@ -9,16 +9,7 @@
 <div class="messages">
     <div class="message-container">
         {{#each message in roomMessages}}
-            <div class="message">
-                <div class="name">
-                    {{message.from}}
-
-                    <span class="time">
-                        {{message.time}}
-                    </span>
-                </div>
-                <div class="text">{{message.text}}</div>
-            </div>
+            {{irc-message message=message}}
         {{/each}}
     </div>
 

@@ -17,6 +17,7 @@
     "preboot": "*",
     "ionicons": "~1.5.2",
     "moment": "~2.7.0",
-    "localforage": "~0.9.1"
+    "localforage": "~0.9.1",
+    "jQuery-linkify": "~1.1.6"
   }
 }
