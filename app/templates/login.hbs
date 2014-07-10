@@ -1,0 +1,33 @@
+<div class="row center-hand middle-hand">
+    <form class="column-5-hand login" {{action "connect" on="submit"}}>
+        <h2>Login</h2>
+
+        <div class="row center-hand">
+            <div class="column-11-hand">
+                {{input value=server placeholder="Server" classNames="form-control"}}
+            </div>
+        </div>
+
+        <div class="row center-hand">
+            <div class="column-11-hand">
+                {{input value=username placeholder="Username" classNames="form-control"}}
+            </div>
+        </div>
+
+        <div class="row center-hand">
+            <div class="column-11-hand">
+                <div class="row end-hand">
+                    <div class="column-3-hand">
+                        <button type="submit" class="btn btn-primary" {{bind-attr disabled=connectDisabled}}>
+                            {{#if connecting}}
+                                <i class="ion-loading-a"></i>
+                            {{/if}}
+
+                            Connect
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

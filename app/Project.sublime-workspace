@@ -1,0 +1,757 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cm",
+				"cmdPattern"
+			],
+			[
+				"no",
+				"nodeWebkit"
+			],
+			[
+				"require",
+				"requireNode"
+			],
+			[
+				"per",
+				"personFieldConfig"
+			],
+			[
+				"field",
+				"fieldConfig"
+			],
+			[
+				"fiel",
+				"fieldUtils"
+			],
+			[
+				"re",
+				"repeatable"
+			],
+			[
+				"o",
+				"overrides"
+			],
+			[
+				"over",
+				"overrides"
+			],
+			[
+				"dat",
+				"datum"
+			],
+			[
+				"ov",
+				"override"
+			],
+			[
+				"fieldDat",
+				"fieldDataForField"
+			],
+			[
+				"fie",
+				"fieldUtils"
+			],
+			[
+				"person",
+				"person_schema"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "controllers/application.js",
+			"settings":
+			{
+				"buffer_size": 526,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/application.js",
+			"settings":
+			{
+				"buffer_size": 267,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/application.hbs",
+			"settings":
+			{
+				"buffer_size": 11,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/index.hbs",
+			"settings":
+			{
+				"buffer_size": 9,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/login.js",
+			"settings":
+			{
+				"buffer_size": 144,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/login.hbs",
+			"settings":
+			{
+				"buffer_size": 104,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "styles/app.less",
+			"settings":
+			{
+				"buffer_size": 720,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/node-webkit.sublime-build",
+	"command_palette":
+	{
+		"height": 203.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 475.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/omarestrella/Development/javascript/irc/app/initializers/.gitkeep",
+		"/Users/omarestrella/Development/javascript/irc/app/router.js",
+		"/Users/omarestrella/Development/javascript/irc/app/app.js",
+		"/Users/omarestrella/Development/javascript/irc/app/styles/.gitkeep",
+		"/Users/omarestrella/Development/javascript/irc/app/initializers/reset-node-webkit.js",
+		"/Users/omarestrella/Development/javascript/irc/app/templates/.gitkeep",
+		"/Users/omarestrella/Development/javascript/irc/app/controllers/.gitkeep",
+		"/Users/omarestrella/Development/javascript/irc/package.json",
+		"/Users/omarestrella/Development/javascript/irc/app/index.html",
+		"/Users/omarestrella/Development/javascript/irc/Brocfile.js",
+		"/Users/omarestrella/Development/javascript/irc/app/package.json",
+		"/Users/omarestrella/Development/javascript/irc/Gruntfile.js",
+		"/Users/omarestrella/Development/javascript/irc/app/Project.sublime-project",
+		"/Users/omarestrella/Library/Application Support/Sublime Text 3/Packages/User/node-webkit.sublime-build",
+		"/Users/omarestrella/Development/javascript/irc/client/app/controllers/application.js",
+		"/Users/omarestrella/Development/javascript/irc/.jshintrc",
+		"/Users/omarestrella/Development/javascript/irc/client/dist/package.json",
+		"/Users/omarestrella/Development/javascript/irc/client/app/app.js",
+		"/Users/omarestrella/Development/javascript/irc/client/app/index.html",
+		"/Users/omarestrella/Development/javascript/irc/client/dist/index.html",
+		"/Users/omarestrella/Development/javascript/irc/client/config/environment.js",
+		"/Users/omarestrella/Development/orgspan/generator/schema/group.js",
+		"/Users/omarestrella/Development/orgspan/generator/fields/text.js",
+		"/Users/omarestrella/Development/javascript/kanban/app/routes/index.js",
+		"/Users/omarestrella/Development/javascript/kanban/app/app.js",
+		"/Users/omarestrella/Development/javascript/kanban/.jshintrc",
+		"/Users/omarestrella/Development/javascript/kanban/app/models/card.coffee",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/Brocfile.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/templates/components/audio-player.hbs",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/application/api/JobController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/application/preferences/ChangePasswordController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/auth/Session.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/index.html",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/package.json",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/admin/manage/tags/AdminManageTagsController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/chat/controller/ChatController.coffee",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/entity/EntityMixin.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/fieldConfig/components/TagEditorComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/location/model/LocationModel.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/person/components/PrimaryContactIconComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/person/components/realtionship-picker/RelationshipPickerComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/person/detail/PersonDetailController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/person/model/PersonModel.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/purecloud/model/VoicemailMessageModel.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/atwho.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/datepicker.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/ember-widgets.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/font-awesome.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/ionicons.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/jcrop.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/leaflet.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/messenger.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/orgspan-fonts.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/tagsinput.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/admin/manage/admin-manage-tags.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/admin/AdminArrayController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/admin.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/admin/admin-main.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/vendor/ionicons/src/android-data.svg",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/app.js",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/.jshintrc",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/styles/bootstrap.less",
+		"/Users/omarestrella/Development/orgspan/webclient-ember/app/fieldConfig/FieldSection.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/search/SearchView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/purecloud/model/VoicemailMessageSerializer.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/purecloud/model/VoicemailMessageModel.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/purecloud/model/VoicemailMessageAdapter.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/model/PersonSerializer.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/user/model/UserSerializer.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/model/PersonModel.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/model/PersonAdapter.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/user/model/UserAdapter.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/search/components/AutocompleteSearchComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/search/SearchController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/components/PersonPickerView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/components/realtionship-picker/RelationshipPickerComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/search/components/GroupSearchComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/location/components/LocationFieldSectionComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/node_modules/ember-cli/blueprints/app/files/public/.gitkeep",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/app.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/application/api/ApplicationStore.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/vendor/ionicons/src/android-playstore.svg",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/Ajax.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/detail/views/ExpandingViewMixin.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/components/ProfileContactInfoComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/search/facets/SearchFacetGroupView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/fieldConfig/components/ExpanderPluginComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/node_modules/express/lib/express.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/node_modules/ember-cli/node_modules/npm/node_modules/node-gyp/gyp/pylib/gyp/easy_xml.py",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/vendor/at.js/example.html",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/config/environment.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/detail/views/PersonGroupsView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/detail/views/PersonMapView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/detail/views/PersonRelationshipsView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/group/model/GroupModel.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/application/images/EntityImageComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/entity/EntityMixin.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/node_modules/body-parser/node_modules/iconv-lite/lib/extend-node.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/group/detail/GroupDetailController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/fieldConfig/components/fields/components/LocationFieldComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/detail/PersonDetailController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/entity/EntityControllerMixin.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/cards/components/PersonCardComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/vendor/ionicons/src/ios7-plus-empty.svg",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/package.json",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/fieldConfig/components/FieldSectionMixin.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/vendor/ionicons/src/person.svg",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/fieldConfig/components/FieldSectionComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/auth/signup/SignupController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/auth/login/LoginController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/fieldConfig/FieldSection.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/fieldConfig/FieldConfig.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/node_modules/ember-cli/lib/models/file-info.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/purecloud/PurecloudController.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/application/ApplicationRoute.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/application/ApplicationView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/application/LoadingView.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/application/LoadingRoute.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/vendor/loader/loader.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/vendor/ionicons/src/load-a.svg",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/vendor/ionicons/src/log-out.svg",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/node_modules/broccoli-coffee/LICENSE",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/chat/roster/ChatRosterController.coffee",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/chat/models/ChatMessage.coffee",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/chat/models/ChatRoom.coffee",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/app/person/components/PrimaryContactIconComponent.js",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/.jshintrc",
+		"/Users/omarestrella/Development/orgspan/webclient-cli/bower.json"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 106.0,
+		"where_history":
+		[
+			"<open files>",
+			"",
+			"/Users/omarestrella/Development/orgspan/webclient-ember/app",
+			"/Users/omarestrella/Development/orgspan/webclient-cli/app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"');",
+			"load-ini",
+			"dataMappings",
+			"fieldConfig",
+			";\n",
+			"schema",
+			"personSchema",
+			"configFields",
+			"personSchema",
+			"social",
+			"section",
+			"person_schema",
+			"configFields",
+			"person_schema",
+			"\"",
+			"');",
+			"}\n",
+			"column",
+			"RegisterComponents",
+			"@status-online",
+			"from 'Purecloud.Ajax",
+			"Purecloud.Ajax",
+			"purecloud/Ajax",
+			"OrgspanResolver",
+			".jshint",
+			"'../../vendor",
+			"../../vendor",
+			"../../",
+			"from 'Purecloud.",
+			"Purecloud.",
+			"Purecloud.LoadingView",
+			"Purecloud.PurecloudSerializer",
+			"Purecloud.PurecloudAdapter",
+			"Purecloud.ApplicationSerializer",
+			"Purecloud.EntityMixin",
+			"Purecloud.ApplicationAdapter",
+			"Purecloud.SearchMixin",
+			"Purecloud.SearchQuery",
+			"Purecloud.SearchQueryMixin",
+			"fieldConfig/FieldSectionComponent",
+			"Purecloud.FieldSectionComponent",
+			"fieldConfig/FieldSectionMixin",
+			"Purecloud.ExpandingViewMixin",
+			"Purecloud.FieldSectionMixin",
+			".EntityControllerMixin",
+			"LocationModalComponent",
+			"EditProfilePicture",
+			"Purecloud.EditProfilePicture",
+			"Purecloud.EditProfilePictureView",
+			"Purecloud.FieldSectionComponent",
+			"Purecloud.Session",
+			"Purecloud.LoadingView",
+			"Purecloud.PermissionsController",
+			"Purecloud.VoicemailController",
+			"Purecloud.NotificationComponent",
+			"Purecloud.PubSubMixin",
+			"Purecloud.FieldConfig",
+			"Purecloud.Ajax",
+			"Purecloud.FieldComponentMixin",
+			"Resolver",
+			"Purecloud.UploadPictureModalView",
+			"Purecloud.EditLocationModal",
+			"Purecloud.ModalComponent",
+			"Purecloud.ModalView",
+			"Purecloud.PagingMixin",
+			"Purecloud.AdminArrayController",
+			"Purecloud.PromiseLoadingMixin",
+			"Purecloud.i18n",
+			"Purecloud.Resolver",
+			"Orgspan."
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'",
+			"from 'purecloud/Ajax",
+			"Purecloud.Ajax",
+			"'",
+			"purecloud/application/api/ApplicationAdapter",
+			"purecloud/search/SearchMixin",
+			"purecloud/search/SearchQueryMixin",
+			"fieldConfig/components/FieldSectionComponent",
+			"fieldConfig/components/FieldSectionMixin",
+			"purecloud/person/detail/views/ExpandingViewMixin",
+			"purecloud/fieldConfig/components/FieldSectionMixin",
+			"purecloud/person/detail/views/EditProfilePicture",
+			"purecloud/application/components/NotificationComponent",
+			"purecloud/application/events/PubSubMixin",
+			"purecloud/Ajax",
+			"./FieldComponentMixin",
+			"purecloud/person/detail/views/UploadPictureModalView",
+			"purecloud/application/components/ModalComponent",
+			"purecloud/applicaiton/views/ModalView",
+			"purecloud/search/PagingMixin",
+			"purecloud/admin/AdminArrayController",
+			"purecloud/application/views/PromiseLoadingMixin",
+			"purecloud/i18n/i18n",
+			"Purecloud."
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "controllers/application.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 526,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								522,
+								522
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "routes/application.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								246,
+								246
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/application.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/Handlebars.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/index.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9,
+								9
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/Handlebars/Handlebars.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "controllers/login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								140,
+								140
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/login.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								17
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/Handlebars/Handlebars.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "styles/app.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								273
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 98.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "Project.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"appl",
+				"app/templates/application.hbs"
+			],
+			[
+				"admintagscon",
+				"app/admin/manage/tags/AdminManageTagsController.js"
+			],
+			[
+				".jsin",
+				".jshintrc"
+			],
+			[
+				"searchview.js",
+				"app/search/SearchView.js"
+			],
+			[
+				"app.js",
+				"app/app.js"
+			],
+			[
+				"expandingview",
+				"app/person/detail/views/ExpandingViewMixin.js"
+			],
+			[
+				"persondetail",
+				"app/person/detail/PersonDetailController.js"
+			],
+			[
+				"personcard",
+				"app/cards/components/PersonCardComponent.js"
+			],
+			[
+				"fieldsectioncom",
+				"app/fieldConfig/components/FieldSectionComponent.js"
+			],
+			[
+				".js",
+				".jshintrc"
+			],
+			[
+				"applicationstore",
+				"app/application/api/ApplicationStore.js"
+			],
+			[
+				"session.",
+				"app/auth/Session.js"
+			],
+			[
+				"fieldcon",
+				"app/fieldConfig/FieldConfig.js"
+			],
+			[
+				"uploadpicturemodalview",
+				"app/person/detail/views/UploadPictureModalView.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 228.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

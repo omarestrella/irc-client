@@ -1,0 +1,72 @@
+@room-width: 200px;
+@messages-offset: @room-width + 2px;
+
+.chat-container {
+    height: 100%;
+
+    .rooms, .messages {
+        position: relative;
+        display: inline-block;
+        float: left;
+    }
+}
+
+.rooms {
+    width: @room-width;
+    height: 100%;
+
+    background-color: @black-70;
+    border-right: 1px solid @black-40;
+
+    overflow-y: auto;
+
+    .room {
+        padding: 8px;
+        color: #eee;
+
+        border-bottom: 1px solid @black-80;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.messages {
+    width: ~"calc(100% - @{messages-offset})";
+    height: 100%;
+
+    .message-container {
+        height: ~"calc(100% - 54px)";
+        overflow-y: auto;
+    }
+
+    .message {
+        margin: 6px 0;
+        padding-left: 16px;
+
+        .name {
+            font-size: 0.9em;
+            font-weight: bold;
+
+            .time {
+                font-size: 0.9em;
+                font-weight: normal;
+                color: @black-80;
+
+                padding-left: 16px;
+            }
+        }
+
+        .text {
+            padding-left: 4px;
+        }
+    }
+
+    .text-box {
+        position: absolute;
+        bottom: 0;
+
+        width: 100%;
+    }
+}

@@ -1,0 +1,28 @@
+<div class="rooms">
+    {{#each room in rooms}}
+        <div class="room" {{action "setActiveRoom" room}}>
+            {{room.channelName}}
+        </div>
+    {{/each}}
+</div>
+
+<div class="messages">
+    <div class="message-container">
+        {{#each message in roomMessages}}
+            <div class="message">
+                <div class="name">
+                    {{message.from}}
+
+                    <span class="time">
+                        {{message.time}}
+                    </span>
+                </div>
+                <div class="text">{{message.text}}</div>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="text-box">
+        {{textarea value=currentMessage classNames="form-control"}}
+    </div>
+</div>
