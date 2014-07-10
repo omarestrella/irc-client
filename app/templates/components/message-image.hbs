@@ -1,0 +1,11 @@
+<span class="expander clickable" {{action "toggleExpand"}}>
+    {{#if expanded}}
+        <i class="ion-arrow-down-b"></i>
+
+        <span class="link-text">{{url}}</span>
+    {{else}}
+        <i class="ion-arrow-right-b"></i>
+    {{/if}}
+</span>
+
+<img {{bind-attr src=url}} />

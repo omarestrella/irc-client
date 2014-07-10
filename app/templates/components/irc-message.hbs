@@ -1,0 +1,19 @@
+<div class="name">
+    {{message.from}}
+
+    <span class="time">
+        {{message.time}}
+    </span>
+</div>
+
+<div class="text">
+    {{message.text}}
+</div>
+
+{{#if imageUrls}}
+    <div class="images">
+        {{#each url in imageUrls}}
+            {{message-image url=url}}
+        {{/each}}
+    </div>
+{{/if}}
