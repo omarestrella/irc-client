@@ -1,8 +1,6 @@
 <div class="rooms">
     {{#each room in rooms}}
-        <div class="room" {{action "setActiveRoom" room}}>
-            {{room.channelName}}
-        </div>
+        {{irc-room room=room target=controller}}
     {{/each}}
 </div>
 

@@ -11,7 +11,7 @@ localforage.config({
 localforage.setDriver(localforage.WEBSQL);
 
 export default Ember.Controller.extend({
-    namespaces: ['clientSettings', 'channelSettings'],
+    namespaces: ['clientSettings', 'channelSettings', 'autojoinRooms'],
 
     registerNamespaces: function () {
         var self = this;
