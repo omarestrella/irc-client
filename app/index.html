@@ -1,26 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Client</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Client</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/client.css">
-  </head>
-  <body>
-    <script>
-      window.ClientENV = {{ENV}};
-      window.EmberENV = window.ClientENV.EmberENV;
-      window.requireNode = window.require;
-      window.require = undefined;
-    </script>
-    <script src="assets/vendor.js"></script>
-    <script src="assets/client.js"></script>
-    <script>
-      window.Client = requirejs('client/app')['default'].create(ClientENV.APP);
-    </script>
-  </body>
+        <link rel="stylesheet" href="assets/vendor.css">
+        <link rel="stylesheet" href="assets/client.css">
+    </head>
+    <body>
+        <script>
+            window.ClientENV = {{ENV}};
+            window.EmberENV = window.ClientENV.EmberENV;
+
+            // Immediately load jquery cause hacks
+            window.jQuery = window.$ = require('jquery');
+
+            window._requirelibs = {
+                node: window.require
+            };
+
+            window.require = null;
+        </script>
+
+        <script src="assets/vendor.js"></script>
+
+        <script>
+            (function () {
+                window._requirelibs.browser = window.require;
+
+                var requirenode = window._requirelibs.node;
+                var requirebrowser = window._requirelibs.browser;
+
+                if (!requirenode) {
+                    window._noderequire = requirebrowser;
+                    window.isNode = false;
+                } else {
+                    window.isNode = true;
+                }
+
+                window.require = window.requirejs = function (path) {
+                    var seen = requirebrowser._eak_seen;
+                    if (seen[path]) {
+                        return requirebrowser(path);
+                    }
+
+                    try {
+                        return requirenode(path);
+                    } catch (e) {
+                        console.info('Could not load: ', path, e);
+                    }
+                };
+
+                require._eak_seen = requirebrowser._eak_seen;
+            })();
+        </script>
+
+        <script src="assets/client.js"></script>
+
+        <script>
+            window.Client = window._requirelibs.browser('client/app')['default'].create(ClientENV.APP);
+        </script>
+    </body>
 </html>

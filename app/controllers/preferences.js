@@ -1,17 +1,23 @@
 import Ember from 'ember';
 
-localforage.config({
-    name: 'irc',
-    version: 1.0,
-    size: 4980736, // Size of database, in bytes. WebSQL-only for now.
-    storeName: 'irc',
-    description: 'IRC storage'
-});
-
-localforage.setDriver(localforage.WEBSQL);
+var localforage = require('localForage') || require('localforage');
 
 export default Ember.Controller.extend({
     namespaces: ['clientSettings', 'channelSettings', 'autojoinRooms'],
+
+    init: function () {
+        localforage.config({
+            name: 'irc',
+            version: 1.0,
+            size: 4980736, // Size of database, in bytes. WebSQL-only for now.
+            storeName: 'irc',
+            description: 'IRC storage'
+        });
+
+        localforage.setDriver(localforage.WEBSQL);
+
+        this._super();
+    },
 
     registerNamespaces: function () {
         var self = this;

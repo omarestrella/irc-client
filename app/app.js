@@ -13,20 +13,7 @@ var App = Ember.Application.extend({
     modulePrefix: 'client', // TODO: loaded via config
     Resolver: Resolver,
 
-    connected: false,
-
-    bindMoment: function () {
-        if (window.moment) {
-            this.moment = moment;
-        } else {
-            if (requireNode) {
-                try {
-                    this.moment = requireNode('moment');
-                } catch(e) {}
-            }
-        }
-
-    }.on('init')
+    connected: false
 });
 
 loadInitializers(App, 'client');

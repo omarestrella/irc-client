@@ -6,9 +6,9 @@ import Room from '../models/room';
 import MockIRC from '../services/mock_irc';
 
 var irc;
-if (requireNode) {
-    irc = requireNode('irc');
-} else {
+try {
+    irc = require('irc');
+} catch (e) {
     irc = MockIRC.create({});
 }
 

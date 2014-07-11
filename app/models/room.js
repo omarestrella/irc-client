@@ -5,10 +5,7 @@ import Message from './message';
 
 var commandRegex = /\/(\w+)\s+(.+)/;
 
-var Notification;
-if (requireNode) {
-    Notification = requireNode('node-notifier');
-}
+var Notification = require('node-notifier');
 
 export default Ember.Object.extend(EventMixin, {
     connection: null,

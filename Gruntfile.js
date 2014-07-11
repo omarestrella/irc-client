@@ -37,7 +37,7 @@ grunt.initConfig({
             mac: true,
             win: false,
             linux32: false,
-            linux64: true
+            linux64: false
         },
         src: ['./dist/**/*']
     }

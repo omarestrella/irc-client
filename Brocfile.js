@@ -21,11 +21,7 @@ app.import('vendor/flexboxgrid/css/flexboxgrid.css');
 app.import('vendor/ionicons/css/ionicons.css');
 
 app.import('vendor/moment/moment.js');
-app.import('vendor/localforage/dist/localforage.js');
 app.import('vendor/jQuery-linkify/dist/jquery.linkify.js');
-
-app.import('vendor/contextMenu/contextMenu.css');
-app.import('vendor/contextMenu/contextMenu.js');
 
 var fontAssets = pickFiles('vendor/ionicons/fonts', {
     srcDir: '/',

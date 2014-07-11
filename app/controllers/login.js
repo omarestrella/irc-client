@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
     },
 
     connectAutomaticallyFromLocal: function () {
-        if (!requireNode) {
+        if (!window.isNode) {
             this.set('username', 'mockusername');
             this.send('connect');
         }

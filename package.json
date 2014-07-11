@@ -1,7 +1,8 @@
 {
   "name": "client",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+  "main": "shell.js",
   "directories": {
     "doc": "doc",
     "test": "test"
@@ -42,7 +43,9 @@
   },
   "dependencies": {
     "irc": "^0.3.7",
+    "jquery": "^2.1.1",
     "moment": "^2.7.0",
-    "node-notifier": "^3.0.6"
+    "node-notifier": "^3.0.6",
+    "promise": "^5.0.0"
   }
 }

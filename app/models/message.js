@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var moment = require('moment');
+
 export default Ember.Object.extend({
     from: null,
     channel: null,
@@ -11,6 +13,6 @@ export default Ember.Object.extend({
     }.on('init'),
 
     time: function () {
-        return Client.moment(this.get('timestamp')).format('LLL');
+        return moment(this.get('timestamp')).format('LLL');
     }.property('timestamp')
 });

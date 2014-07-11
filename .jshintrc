@@ -6,7 +6,8 @@
         "Client": true,
         "requireNode": true,
         "moment": true,
-        "localforage": true
+        "localforage": true,
+        "require": true
     },
     "browser": true,
     "boss": true,

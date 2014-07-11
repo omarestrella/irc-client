@@ -18,6 +18,10 @@ export default Ember.Component.extend({
         }
     },
 
+    attachRightClickMenu: function () {
+        debugger;
+    }.on('didInsertElement'),
+
     click: function () {
         this.send('setActiveRoom', this.get('room'));
     }
