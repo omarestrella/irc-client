@@ -18,6 +18,10 @@ export default Ember.Controller.extend({
 
             var channelsArr = channels.split(',');
 
+            if (!channelsArr) {
+                channelsArr = ['#thebestfriendsgang'];
+            }
+
             var connection = this.get('controllers.connection');
 
             connection.setProperties({

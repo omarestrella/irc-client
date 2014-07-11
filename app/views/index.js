@@ -15,5 +15,15 @@ export default Ember.View.extend({
                 self.get('controller').send('sendMessage');
             }
         });
-    }.on('didInsertElement')
+    }.on('didInsertElement'),
+
+    scrollDownOnMessage: function () {
+        var container = this.$('.message-container');
+        if (container) {
+            Ember.run.scheduleOnce('afterRender', this, function () {
+                var height = container.height();
+                container.scrollTop(height);
+            });
+        }
+    }.observes('controller.activeRoom.messages.[]')
 });
