@@ -20,9 +20,14 @@ export default Ember.View.extend({
     scrollDownOnMessage: function () {
         var container = this.$('.message-container');
         if (container) {
+            var scrollPosition = container.scrollTop() + container.height();
+            var scrollHeight = container.prop('scrollHeight');
+            var following = scrollPosition === scrollHeight;
+
             Ember.run.scheduleOnce('afterRender', this, function () {
-                var height = container.height();
-                container.scrollTop(height);
+                if (following) {
+                    container.scrollTop(scrollHeight);
+                }
             });
         }
     }.observes('controller.activeRoom.messages.[]')

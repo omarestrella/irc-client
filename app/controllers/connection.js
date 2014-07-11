@@ -41,7 +41,8 @@ export default Ember.Controller.extend(EventMixin, {
 
         var client = new irc.Client(server, username, {
             channels: defaultChannels,
-            autoConnect: false
+            autoConnect: false,
+            floodProtection: false
         });
 
         this.set('client', client);
