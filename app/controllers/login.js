@@ -12,14 +12,20 @@ export default Ember.Controller.extend({
     actions: {
         connect: function () {
             var self = this;
+            var prefs = this.get('controllers.preferences');
             var server = this.get('server');
             var username = this.get('username');
             var channels = this.get('channels');
 
             var channelsArr = channels.split(',');
+            var autoJoinRooms = prefs.get('clientSettings.autoJoinRooms')
 
             if (!channelsArr) {
                 channelsArr = ['#thebestfriendsgang'];
+            }
+
+            if (autoJoinRooms) {
+                channelsArr = _.uniq(channelsArr.concat(autoJoinRooms));
             }
 
             var connection = this.get('controllers.connection');

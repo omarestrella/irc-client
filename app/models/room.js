@@ -17,6 +17,8 @@ export default Ember.Object.extend(EventMixin, {
     nicks: null,
     messages: null,
 
+    isAutoJoinedRoom: false,
+
     setPerRoomProperties: function () {
         this.set('messages', []);
         this.set('nicks', []);

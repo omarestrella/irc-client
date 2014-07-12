@@ -1,62 +1,59 @@
 import Ember from 'ember';
 
-var localforage = require('localForage') || require('localforage');
+var pathSplitRegex = /(\w+)?\.([\w\.]+)/;
 
 export default Ember.Controller.extend({
-    namespaces: ['clientSettings', 'channelSettings', 'autojoinRooms'],
-
-    init: function () {
-        localforage.config({
-            name: 'irc',
-            version: 1.0,
-            size: 4980736, // Size of database, in bytes. WebSQL-only for now.
-            storeName: 'irc',
-            description: 'IRC storage'
-        });
-
-        localforage.setDriver(localforage.WEBSQL);
-
-        this._super();
-    },
+    namespaces: ['clientSettings', 'channelSettings'],
 
     registerNamespaces: function () {
         var self = this;
         var namespaces = this.get('namespaces');
         namespaces.forEach(function (namespace) {
-            localforage.getItem(namespace).then(function (preference) {
-                if (preference) {
-                    Ember.set(self, namespace, preference);
-                } else {
-                    return localforage.setItem(namespace, {});
-                }
-            });
+            var string = window.localStorage.getItem(namespace);
+            var preference = JSON.parse(string);
+            if (preference) {
+                Ember.set(self, namespace, preference);
+            } else {
+                window.localStorage.setItem(namespace, JSON.stringify({}));
+            }
         });
     }.on('init'),
 
     getPreference: function (path) {
-        return localforage.getItem(path);
-    },
-
-    setPreference: function (path, preference) {
-        var self = this;
-        var splitRegex = /(\w+)?\.([\w\.]+)/;
-
+        var rawData;
         if (path.indexOf('.') > -1) {
-            var match = path.match(splitRegex);
+            var match = path.match(pathSplitRegex);
             if (match && match.length > 2) {
                 var namespace = match[1];
                 var extra = match[2];
-
-                return localforage.getItem(namespace).then(function (data) {
-                    Ember.set(data, extra, preference);
-                    Ember.set(this, namespace, data);
-                    return localforage.setItem(namespace, data);
-                });
+                var namespaceData = this.getPreference(namespace);
+                rawData = Ember.get(namespaceData, extra);
             }
         } else {
-            return localforage.setItem(path, preference).then(function () {
-                self.set(path, preference);
-            });
+            rawData = window.localStorage.getItem(path);
+        }
+
+        if (rawData === undefined) {
+            return rawData;
+        }
+
+        return JSON.parse(rawData);
+    },
+
+    setPreference: function (path, preference) {
+        var string = JSON.stringify(preference);
+
+        if (path.indexOf('.') > -1) {
+            var match = path.match(pathSplitRegex);
+            if (match && match.length > 2) {
+                var namespace = match[1];
+                var extra = match[2];
+                var namespaceData = this.getPreference(namespace);
+                Ember.set(namespaceData, extra, preference);
+                this.setPreference(namespace, namespaceData);
+            }
+        } else {
+            window.localStorage.setItem(path, string);
         }
     }
 });

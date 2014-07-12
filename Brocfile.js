@@ -22,6 +22,7 @@ app.import('vendor/ionicons/css/ionicons.css');
 
 app.import('vendor/moment/moment.js');
 app.import('vendor/jQuery-linkify/dist/jquery.linkify.js');
+app.import('vendor/lodash/dist/lodash.js');
 
 var fontAssets = pickFiles('vendor/ionicons/fonts', {
     srcDir: '/',

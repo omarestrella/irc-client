@@ -7,7 +7,8 @@
         "requireNode": true,
         "moment": true,
         "localforage": true,
-        "require": true
+        "require": true,
+        "_": true
     },
     "browser": true,
     "boss": true,

@@ -57,15 +57,21 @@ export default Ember.Controller.extend(EventMixin, {
     },
 
     initializeRoom: function (channel, nickname, message) {
+        var prefs = this.get('controllers.preferences');
+        var autoJoinRooms = prefs.get('clientSettings.autoJoinRooms');
         var currentRoom = this.get('rooms').findBy('channelName', channel);
 
         if (!currentRoom) {
+            var autoJoined = _.contains(autoJoinRooms, channel);
+
             var room = Room.create({
                 connection: this,
                 client: this.client,
                 channelName: channel,
                 joinMessage: message
             });
+
+            room.set('isAutoJoinedRoom', autoJoined);
 
             Ember.Logger.info('Joining:', channel);
 
@@ -101,5 +107,28 @@ export default Ember.Controller.extend(EventMixin, {
 
             });
         }
+    },
+
+    setAutoJoin: function (room, menuItem) {
+        var prefs = this.get('controllers.preferences');
+        var rooms = prefs.getPreference('clientSettings.autoJoinRooms');
+
+        if (!rooms) {
+            rooms = [];
+        }
+
+        room.set('isAutoJoinedRoom', menuItem.checked);
+
+        if (menuItem.checked) {
+            rooms.addObject(room.get('channelName'));
+        } else {
+            rooms.removeObject(room.get('channelName'));
+        }
+
+        prefs.setPreference('clientSettings.autoJoinRooms', rooms);
+    },
+
+    leaveRoom: function (room) {
+
     }
 });
