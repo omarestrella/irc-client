@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     needs: ['connection'],
 
+    connectionBinding: 'controllers.connection',
     clientBinding: 'controllers.connection.client',
     roomsBinding: 'controllers.connection.rooms',
 

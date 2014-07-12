@@ -24,6 +24,10 @@ export default Ember.Object.extend(EventMixin, {
         this.set('nicks', []);
     }.on('init'),
 
+    isServerRoom: function () {
+        return this.get('channelName').charAt(0) !== '#';
+    }.property('channelName'),
+
     storeMessage: function (from, channel, text, message) {
         var msg = Message.create({
             from: from,
@@ -60,7 +64,7 @@ export default Ember.Object.extend(EventMixin, {
             return null;
         }
 
-        if (message.get('from') === this.get('client.username')) {
+        if (message.get('from') === this.get('client.nick')) {
             return null;
         }
 

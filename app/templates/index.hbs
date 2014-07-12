@@ -1,4 +1,6 @@
 <div class="rooms">
+    {{irc-room room=connection.serverRoom target=controller}}
+
     {{#each room in rooms}}
         {{irc-room room=room target=controller}}
     {{/each}}

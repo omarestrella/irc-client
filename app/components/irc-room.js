@@ -6,7 +6,7 @@ var MenuItem = remote.require('menu-item');
 
 export default Ember.Component.extend({
     classNames: ['room'],
-    classNameBindings: ['isActive:active:'],
+    classNameBindings: ['isActive:active:', 'room.isServerRoom:server-room:'],
 
     isAutoJoinedRoom: 'room.isAutoJoinedRoom',
     connectionBinding: 'room.connection',
@@ -45,11 +45,11 @@ export default Ember.Component.extend({
         }, false);
     }.on('didInsertElement'),
 
-    setAutoJoin: function (menuItem, browserWindow) {
+    setAutoJoin: function (menuItem) {
         this.get('connection').setAutoJoin(this.get('room'), menuItem);
     },
 
-    leaveRoom: function (menuItem, browserWindow) {
+    leaveRoom: function () {
         this.get('connection').leaveRoom(this.get('room'));
     },
 

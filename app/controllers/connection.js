@@ -19,6 +19,8 @@ export default Ember.Controller.extend(EventMixin, {
     username: null,
     defaultChannels: null,
 
+    serverRoom: null,
+
     client: null,
 
     rooms: [],
@@ -35,6 +37,7 @@ export default Ember.Controller.extend(EventMixin, {
     }.observes('client'),
 
     connectToServer: function () {
+        var self = this;
         var server = this.get('server');
         var username = this.get('username');
         var defaultChannels = this.get('defaultChannels');
@@ -50,6 +53,8 @@ export default Ember.Controller.extend(EventMixin, {
         return new Ember.RSVP.Promise(function (resolve) {
             client.connect(function (data) {
                 Client.set('connected', true);
+
+                self.initializeServerRoom();
 
                 resolve(data);
             });
@@ -92,6 +97,15 @@ export default Ember.Controller.extend(EventMixin, {
         }
     }.listener('names'),
 
+    userLeftRoom: function (channel, nick, reason, message) {
+        var room = this.get('rooms').findBy('channelName', channel);
+        if (room) {
+            Ember.Logger.info('User leaving room:', channel);
+
+            this.get('rooms').removeObject(room);
+        }
+    }.listener('part'),
+
     updateMessages: function (from, channel, text, message) {
         var room = this.get('rooms').findBy('channelName', channel);
         if (room) {
@@ -100,6 +114,20 @@ export default Ember.Controller.extend(EventMixin, {
             room.storeMessage(from, channel, text, message);
         }
     }.listener('message#'),
+
+    handleInitialServerConnection: function (message) {
+        console.log('message');
+    }.listener('registered'),
+
+    initializeServerRoom: function () {
+        var room = Room.create({
+            connection: this,
+            client: this.get('client'),
+            channelName: this.get('client.opt.server')
+        });
+
+        this.set('serverRoom', room);
+    },
 
     join: function (args) {
         if (args.indexOf('#') === 0) {
@@ -111,7 +139,7 @@ export default Ember.Controller.extend(EventMixin, {
 
     setAutoJoin: function (room, menuItem) {
         var prefs = this.get('controllers.preferences');
-        var rooms = prefs.getPreference('clientSettings.autoJoinRooms');
+        var rooms = prefs.get('clientSettings.autoJoinRooms');
 
         if (!rooms) {
             rooms = [];
@@ -129,6 +157,9 @@ export default Ember.Controller.extend(EventMixin, {
     },
 
     leaveRoom: function (room) {
+        var channelName = room.get('channelName');
+        this.get('client').part(channelName, 'Leaving.', function () {
 
+        });
     }
 });
