@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     classNames: ['message'],
 
+    message: null,
+
     imageUrls: null,
 
     setPerMessageProperties: function () {
@@ -18,19 +20,21 @@ export default Ember.Component.extend({
     collectImageUrls: function (links) {
         var self = this;
 
-        links.each(function () {
-            var url = Ember.$(this).attr('href');
+        if (!this.get('message.room.isServerRoom')) {
+            links.each(function () {
+                var url = Ember.$(this).attr('href');
 
-            Ember.$.ajax({
-                type: 'head',
-                url: url,
-                success: function (data, status, xhr) {
-                    var contentType = xhr.getResponseHeader('Content-Type');
-                    if (contentType.indexOf('image') > -1) {
-                        self.get('imageUrls').addObject(url);
+                Ember.$.ajax({
+                    type: 'head',
+                    url: url,
+                    success: function (data, status, xhr) {
+                        var contentType = xhr.getResponseHeader('Content-Type');
+                        if (contentType.indexOf('image') > -1) {
+                            self.get('imageUrls').addObject(url);
+                        }
                     }
-                }
+                });
             });
-        });
+        }
     }
 });

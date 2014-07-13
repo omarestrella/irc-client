@@ -4,8 +4,9 @@ export default Ember.Controller.extend({
     needs: ['connection'],
 
     connectionBinding: 'controllers.connection',
-    clientBinding: 'controllers.connection.client',
-    roomsBinding: 'controllers.connection.rooms',
+    serverRoomBinding: 'connection.serverRoom',
+    clientBinding: 'connection.client',
+    roomsBinding: 'connection.rooms',
 
     activeRoom: null,
     currentMessage: null,
@@ -38,9 +39,18 @@ export default Ember.Controller.extend({
         return this.get('activeRoom.messages');
     }.property('activeRoom', 'activeRoom.messages.[]'),
 
-    setActiveRoomIfNone: function () {
-        if (!this.get('activeRoom') && this.get('rooms')) {
-            this.set('activeRoom', this.get('rooms')[0]);
-        }
-    }.observes('rooms.[]')
+//    setActiveRoomIfNone: function () {
+//        var serverRoom = this.get('serverRoom');
+//        var rooms = this.get('rooms');
+//        if (!this.get('activeRoom')) {
+//            var active;
+//            if (serverRoom) {
+//                active = serverRoom;
+//            } else if (rooms.get('length')) {
+//                active = rooms[0];
+//            } else {}
+//
+//            this.set('activeRoom', active);
+//        }
+//    }.observes('rooms.[]', 'serverRoom')
 });

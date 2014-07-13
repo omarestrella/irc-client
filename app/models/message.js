@@ -3,6 +3,7 @@ import Ember from 'ember';
 var moment = require('moment');
 
 export default Ember.Object.extend({
+    room: null,
     from: null,
     channel: null,
     text: null,

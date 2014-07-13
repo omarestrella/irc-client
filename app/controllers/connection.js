@@ -116,8 +116,38 @@ export default Ember.Controller.extend(EventMixin, {
     }.listener('message#'),
 
     handleInitialServerConnection: function (message) {
-        console.log('message');
+        Ember.run.scheduleOnce('render', this, function () {
+            var room = this.get('serverRoom');
+
+            var from = room.get('channelName');
+            var text = message.args[1];
+
+            room.storeMessage(from, from, text, message);
+        });
     }.listener('registered'),
+
+    handleCCTPMessages: function (message) {
+        Ember.Logger.debug('Received CCTP message:', message);
+    }.listener('cctp'),
+
+    handleRawMessages: function (message) {
+        var args = message.args;
+        if (args.length > 1) {
+            var room = this.get('serverRoom');
+            if (room) {
+                var from = room.get('channelName');
+
+                args = _.rest(args);
+
+                args.forEach(function (arg) {
+                    var text = '%@: %@'.fmt(message.rawCommand, arg);
+                    room.storeMessage(from, from, text, message);
+                });
+            }
+        }
+
+        Ember.Logger.debug('Received raw message:', message);
+    }.listener('raw'),
 
     initializeServerRoom: function () {
         var room = Room.create({

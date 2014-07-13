@@ -17,6 +17,15 @@ export default Ember.View.extend({
         });
     }.on('didInsertElement'),
 
+    setServerRoomAsActive: function () {
+        Ember.run.scheduleOnce('render', this, function () {
+            var serverRoom = this.get('controller.serverRoom');
+            if (serverRoom) {
+                this.get('controller').send('setActiveRoom', serverRoom);
+            }
+        });
+    }.on('didInsertElement'),
+
     scrollDownOnMessage: function () {
         var container = this.$('.message-container');
         if (container) {

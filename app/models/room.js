@@ -30,6 +30,7 @@ export default Ember.Object.extend(EventMixin, {
 
     storeMessage: function (from, channel, text, message) {
         var msg = Message.create({
+            room: this,
             from: from,
             channel: channel,
             text: text,
@@ -65,6 +66,10 @@ export default Ember.Object.extend(EventMixin, {
         }
 
         if (message.get('from') === this.get('client.nick')) {
+            return null;
+        }
+
+        if (this.get('isServerRoom')) {
             return null;
         }
 
