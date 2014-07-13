@@ -1,10 +1,11 @@
 @room-width: 200px;
-@messages-offset: @room-width + 2px;
+@roster-width: 175px;
+@messages-offset: @room-width + @roster-width + 4px;
 
 .chat-container {
     height: 100%;
 
-    .rooms, .messages {
+    .rooms, .messages, .roster {
         position: relative;
         display: inline-block;
         float: left;
@@ -29,6 +30,17 @@
         &:hover {
             cursor: pointer;
         }
+    }
+}
+
+.roster {
+    width: @roster-width;
+    height: 100%;
+
+    overflow-y: auto;
+
+    .nickname {
+        padding: 8px;
     }
 }
 

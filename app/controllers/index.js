@@ -37,5 +37,9 @@ export default Ember.Controller.extend({
 
     roomMessages: function () {
         return this.get('activeRoom.messages');
-    }.property('activeRoom', 'activeRoom.messages.[]')
+    }.property('activeRoom', 'activeRoom.messages.[]'),
+
+    roomNicknames: function () {
+        return this.get('activeRoom.nicks');
+    }.property('activeRoom', 'activeRoom.nicks.[]')
 });

@@ -17,3 +17,11 @@
         {{textarea value=currentMessage classNames="form-control"}}
     </div>
 </div>
+
+<div class="roster">
+    {{#each nickname in roomNicknames}}
+        <div class="nickname">
+            {{nickname}}
+        </div>
+    {{/each}}
+</div>
