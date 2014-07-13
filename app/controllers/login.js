@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
             var channels = this.get('channels');
 
             var channelsArr = channels.split(',');
-            var autoJoinRooms = prefs.get('clientSettings.autoJoinRooms')
+            var autoJoinRooms = prefs.get('clientSettings.autoJoinRooms');
 
             if (!channelsArr) {
                 channelsArr = ['#thebestfriendsgang'];

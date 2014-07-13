@@ -37,20 +37,5 @@ export default Ember.Controller.extend({
 
     roomMessages: function () {
         return this.get('activeRoom.messages');
-    }.property('activeRoom', 'activeRoom.messages.[]'),
-
-//    setActiveRoomIfNone: function () {
-//        var serverRoom = this.get('serverRoom');
-//        var rooms = this.get('rooms');
-//        if (!this.get('activeRoom')) {
-//            var active;
-//            if (serverRoom) {
-//                active = serverRoom;
-//            } else if (rooms.get('length')) {
-//                active = rooms[0];
-//            } else {}
-//
-//            this.set('activeRoom', active);
-//        }
-//    }.observes('rooms.[]', 'serverRoom')
+    }.property('activeRoom', 'activeRoom.messages.[]')
 });
