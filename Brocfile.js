@@ -12,9 +12,7 @@ var nodeWebkit = pickFiles('app', {
     destDir: '/'
 });
 
-var app = new EmberApp({
-    wrapInEval: false
-});
+var app = new EmberApp();
 
 app.import('vendor/bootstrap/dist/css/bootstrap.css');
 app.import('vendor/flexboxgrid/css/flexboxgrid.css');

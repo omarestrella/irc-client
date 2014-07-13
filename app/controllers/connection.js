@@ -5,10 +5,9 @@ import Room from '../models/room';
 
 import MockIRC from '../services/mock_irc';
 
-var irc;
-try {
-    irc = require('irc');
-} catch (e) {
+var irc = require('irc');
+
+if (!irc) {
     irc = MockIRC.create({});
 }
 
@@ -16,7 +15,7 @@ export default Ember.Controller.extend(EventMixin, {
     needs: ['preferences'],
 
     server: null,
-    username: null,
+    nickname: null,
     defaultChannels: null,
 
     serverRoom: null,
@@ -39,10 +38,10 @@ export default Ember.Controller.extend(EventMixin, {
     connectToServer: function () {
         var self = this;
         var server = this.get('server');
-        var username = this.get('username');
+        var nickname = this.get('nickname');
         var defaultChannels = this.get('defaultChannels');
 
-        var client = new irc.Client(server, username, {
+        var client = new irc.Client(server, nickname, {
             channels: defaultChannels,
             autoConnect: false,
             floodProtection: false

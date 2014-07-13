@@ -25,7 +25,12 @@ export default Ember.Object.extend(EventMixin, {
     }.on('init'),
 
     isServerRoom: function () {
-        return this.get('channelName').charAt(0) !== '#';
+        var name = this.get('channelName');
+        if (name) {
+            return this.get('channelName').charAt(0) !== '#';
+        }
+
+        return false;
     }.property('channelName'),
 
     storeMessage: function (from, channel, text, message) {

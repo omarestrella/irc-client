@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
     needs: ['connection', 'preferences'],
 
     server: 'irc.freenode.net',
-    username: null,
+    nickname: null,
     channels: '',
 
     connecting: false,
@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
             var self = this;
             var prefs = this.get('controllers.preferences');
             var server = this.get('server');
-            var username = this.get('username');
+            var nickname = this.get('nickname');
             var channels = this.get('channels');
 
             var channelsArr = channels.split(',');
@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
 
             connection.setProperties({
                 server: server,
-                username: username,
+                nickname: nickname,
                 defaultChannels: channelsArr
             });
 
@@ -47,8 +47,8 @@ export default Ember.Controller.extend({
     },
 
     connectAutomaticallyFromLocal: function () {
-        if (!window.isNode) {
-            this.set('username', 'mockusername');
+        if (!window.isDesktop) {
+            this.set('nickname', 'mockusername');
             this.send('connect');
         }
     }.on('init'),

@@ -1,8 +1,14 @@
 import Ember from 'ember';
 
-var remote = require('remote');
-var Menu = remote.require('menu');
-var MenuItem = remote.require('menu-item');
+var remote, Menu, MenuItem;
+
+try {
+    remote = require('remote');
+    Menu = remote.require('menu');
+    MenuItem = remote.require('menu-item');
+} catch (e) {
+    // No native on web...
+}
 
 export default Ember.Component.extend({
     classNames: ['room'],
@@ -27,22 +33,25 @@ export default Ember.Component.extend({
 
     attachRightClickMenu: function () {
         var self = this;
-        var menu = new Menu();
 
-        menu.append(new MenuItem({
-            label: 'Auto-join Room',
-            type: 'checkbox',
-            checked: this.get('isAutoJoinedRoom'),
-            click: _.bind(self.setAutoJoin, self)
-        }));
-        menu.append(new MenuItem({ label: 'Leave Room', click: _.bind(self.leaveRoom, self) }));
+        if (window.isDesktop) {
+            var menu = new Menu();
 
-        window.addEventListener('contextmenu', function (event) {
-            if (Ember.$(event.target).attr('id') === self.$().attr('id')) {
-                event.preventDefault();
-                menu.popup(remote.getCurrentWindow());
-            }
-        }, false);
+            menu.append(new MenuItem({
+                label: 'Auto-join Room',
+                type: 'checkbox',
+                checked: this.get('isAutoJoinedRoom'),
+                click: _.bind(self.setAutoJoin, self)
+            }));
+            menu.append(new MenuItem({ label: 'Leave Room', click: _.bind(self.leaveRoom, self) }));
+
+            window.addEventListener('contextmenu', function (event) {
+                if (Ember.$(event.target).attr('id') === self.$().attr('id')) {
+                    event.preventDefault();
+                    menu.popup(remote.getCurrentWindow());
+                }
+            }, false);
+        }
     }.on('didInsertElement'),
 
     setAutoJoin: function (menuItem) {

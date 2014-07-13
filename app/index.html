@@ -16,7 +16,9 @@
             window.EmberENV = window.ClientENV.EmberENV;
 
             // Immediately load jquery cause hacks
-            window.jQuery = window.$ = require('jquery');
+            if (window.require) {
+                window.jQuery = window.$ = require('jquery');
+            }
 
             window._requirelibs = {
                 node: window.require
@@ -36,9 +38,9 @@
 
                 if (!requirenode) {
                     window._noderequire = requirebrowser;
-                    window.isNode = false;
+                    window.isDesktop = false;
                 } else {
-                    window.isNode = true;
+                    window.isDesktop = true;
                 }
 
                 window.require = window.requirejs = function (path) {
