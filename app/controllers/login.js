@@ -55,8 +55,8 @@ export default Ember.Controller.extend({
 
     connectDisabled: function () {
         var server = this.get('server');
-        var username = this.get('username');
+        var nickname = this.get('nickname');
 
-        return Ember.isEmpty(server) || Ember.isEmpty(username);
-    }.property('server', 'username')
+        return Ember.isEmpty(server) || Ember.isEmpty(nickname);
+    }.property('server', 'nickname')
 });
