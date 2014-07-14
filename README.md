@@ -13,7 +13,7 @@ IRC Client
 
 * `ember server --port 9000`
 * Run Atom for your system:
-  - Mac: `./atombinaries/Atom.app/Contents/MacOS/Atom .
+  - Mac: `./atombinaries/Atom.app/Contents/MacOS/Atom .`
   - Linux: `./atombinaries/atom .`
 
 ## Running Tests
