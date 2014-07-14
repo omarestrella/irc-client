@@ -3,7 +3,7 @@ var grunt = require('grunt');
 var package = require('./package.json');
 
 grunt.loadNpmTasks('grunt-exec');
-grunt.loadNpmTasks('grunt-node-webkit-builder');
+grunt.loadNpmTasks('grunt-download-atom-shell');
 
 grunt.initConfig({
     exec: {
@@ -31,15 +31,9 @@ grunt.initConfig({
         }
     },
 
-    nodewebkit: {
-        options: {
-            build_dir: './webkitbuilds',
-            mac: true,
-            win: false,
-            linux32: false,
-            linux64: false
-        },
-        src: ['./dist/**/*']
+    'download-atom-shell': {
+        version: '0.13.3',
+        outputDir: 'atombinaries'
     }
 });
 
