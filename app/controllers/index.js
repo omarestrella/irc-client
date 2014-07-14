@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
 
         sendMessage: function () {
             var message = this.get('currentMessage');
-            var nick = this.get('controllers.connection.username');
+            var nick = this.get('controllers.connection.nickname');
 
             if (!Ember.isEmpty(message)) {
                 this.get('activeRoom').sendMessage(nick, message);
