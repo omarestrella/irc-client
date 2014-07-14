@@ -1,3 +1,5 @@
+/* global process */
+
 var app = require('app');
 var BrowserWindow = require('browser-window');
 
@@ -9,9 +11,14 @@ app.on('window-all-closed', function () {
     }
 });
 
-
-app.on('ready', function () {
-    mainWindow = new BrowserWindow({width: 800, height: 600});
+function openMainWindow () {
+    mainWindow = new BrowserWindow({
+        width: 1024,
+        height: 800,
+        'min-width': 800,
+        'min-height': 800,
+        frame: false
+    });
 
     mainWindow.loadUrl('http://localhost:9000');
 
@@ -20,4 +27,10 @@ app.on('ready', function () {
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
-});
+}
+
+app.on('ready', openMainWindow);
+
+app.on('activate-with-no-open-windows', openMainWindow);
+
+app.commandLine.appendSwitch('enable-transparent-visuals');

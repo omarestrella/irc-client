@@ -6,6 +6,10 @@ function Client() {
     return {
         connect: function (cb) {
             cb({});
+
+            this.opt = {
+                server: 'irc.mockserver.net'
+            };
         },
 
         addListener: function (event, cb) {

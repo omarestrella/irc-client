@@ -1,0 +1,24 @@
+.roster {
+    width: @roster-width;
+    height: 100%;
+
+    color: #fff;
+    background: lighten(@background-dark, 15%);
+
+    overflow-y: auto;
+
+    .nickname {
+        padding: 8px;
+    }
+
+    .spare {
+        position: absolute;
+        bottom: 0;
+
+        width: 100%;
+        height: @textbox-height + @titlebar-height;
+
+        background: @textbox-background;
+        border-top: 1px solid @textbox-border-color;
+    }
+}

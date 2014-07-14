@@ -1,0 +1,27 @@
+@light-border-color: lighten(@background-dark, 3%);
+@dark-border-color: darken(@background-dark, 4%);
+
+.rooms {
+    width: @room-width;
+    height: 100%;
+
+    color: #fff;
+    background: @background-dark;
+    border-right: 1px solid lighten(@background-dark, 4%);
+
+    overflow-y: auto;
+
+    .room {
+        padding: 8px;
+
+        border-top: 1px solid @light-border-color;
+        border-bottom: 1px solid @dark-border-color;
+
+        &:hover {
+            cursor: pointer;
+
+            border-top: 1px solid @dark-border-color;
+            background: @dark-border-color;
+        }
+    }
+}

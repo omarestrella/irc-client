@@ -48,6 +48,7 @@ export default Ember.Controller.extend({
 
     connectAutomaticallyFromLocal: function () {
         if (!window.isDesktop) {
+            this.set('server', 'irc.mocking.net');
             this.set('nickname', 'mockusername');
             this.send('connect');
         }

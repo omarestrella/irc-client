@@ -1,0 +1,99 @@
+.messages {
+    width: ~"calc(100% - @{messages-offset})";
+    height: 100%;
+
+    .message-container {
+        height: ~"calc(100% - @{messages-height})";
+        overflow-y: auto;
+    }
+
+    .message {
+        position: relative;
+
+        margin: 6px 0;
+        padding-left: 16px;
+
+        .name {
+            font-size: 0.9em;
+            font-weight: bold;
+
+            .time {
+                font-size: 0.9em;
+                font-weight: normal;
+                color: @black-60;
+
+                padding-left: 16px;
+            }
+        }
+
+        .text {
+            padding-left: 4px;
+        }
+
+        .images {
+            overflow: hidden;
+
+            min-height: 22px;
+
+            .image {
+                position: relative;
+                display: inline-block;
+                float: left;
+
+                min-height: 16px;
+                min-width: 32px;
+
+                .expander {
+                    @margin: 2px;
+                    @width-adjustment: @margin*2;
+
+                    position: absolute;
+                    width: ~"calc(100% - @{width-adjustment})";
+
+                    padding: 0 8px;
+                    margin: @margin;
+
+                    font-size: 18px;
+
+                    background-color: rgba(255, 255, 255, 0.8);
+
+                    .link-text {
+                        display: inline-block;
+
+                        width: 90%;
+
+                        font-size: 11px;
+
+                        .text-truncate();
+                    }
+                }
+
+                img {
+                    display: none;
+                }
+
+                &.expanded img {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .text-box {
+        position: absolute;
+        bottom: 0 + @titlebar-height;
+
+        width: 100%;
+        height: @textbox-height;
+        padding: 6px;
+
+        background: @textbox-background;
+
+        border-top: 1px solid @textbox-border-color;
+
+        textarea {
+            height: @textarea-height - 1px;
+            border-radius: 2px;
+        }
+    }
+}
