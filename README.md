@@ -1,17 +1,20 @@
-# Client
+# IRC Client
 
-This README outlines the details of collaborating on this Ember application.
+IRC Client
 
 ## Installation
 
 * `git clone` this repository
 * `npm install`
 * `bower install`
+* `grunt download-atom-shell`
 
 ## Running
 
-* `ember server`
-* `./lib/Atom.app/Contents/MacOS/Atom .`
+* `ember server --port 9000`
+* Run Atom for your system:
+  - Mac: `./atombinaries/Atom.app/Contents/MacOS/Atom .
+  - Linux: `./atombinaries/atom .`
 
 ## Running Tests
 
@@ -22,4 +25,3 @@ This README outlines the details of collaborating on this Ember application.
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
