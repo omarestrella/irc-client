@@ -23,5 +23,10 @@
             border-top: 1px solid @dark-border-color;
             background: @dark-border-color;
         }
+
+        &.active {
+            border-top: 1px solid @light-border-color;
+            background: lighten(@background-dark, 8%);
+        }
     }
 }

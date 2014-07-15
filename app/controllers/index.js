@@ -13,11 +13,17 @@ export default Ember.Controller.extend({
 
     actions: {
         setActiveRoom: function (room) {
+            var serverRoom = this.get('serverRoom');
+            var currentActiveRoom = this.get('rooms').findBy('isActive', true);
+
             this.set('activeRoom', room);
 
-            var currentActiveRoom = this.get('rooms').findBy('isActive', true);
             if (currentActiveRoom) {
                 currentActiveRoom.set('isActive', false);
+            }
+
+            if (room !== serverRoom) {
+                serverRoom.set('isActive', false);
             }
 
             room.set('isActive', true);

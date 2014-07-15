@@ -12,7 +12,7 @@ try {
 
 export default Ember.Component.extend({
     classNames: ['room'],
-    classNameBindings: ['isActive:active:', 'room.isServerRoom:server-room:'],
+    classNameBindings: ['room.isActive:active:', 'room.isServerRoom:server-room:'],
 
     isAutoJoinedRoom: 'room.isAutoJoinedRoom',
     connectionBinding: 'room.connection',
@@ -20,7 +20,6 @@ export default Ember.Component.extend({
     room: null,
 
     target: null,
-    isActive: false,
 
     actions: {
         setActiveRoom: function (room) {

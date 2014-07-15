@@ -37,16 +37,17 @@ export default Ember.Controller.extend({
 
             var event = choices[choice];
             var funcs = listeners[event];
+            var rooms = ['#mockirc1', '#mockirc2'];
 
             if (funcs) {
                 var args = [];
 
                 if (event === 'names') {
-                    args = ['#mockirc', ['test1', 'test2']];
+                    args = [rooms[_.random(0, 2)], ['test1', 'test2']];
                 } else if (event === 'join') {
-                    args = ['#mockirc', '', {}];
+                    args = [rooms[_.random(0, 2)], '', {}];
                 } else if (event === 'message#') {
-                    args = ['test1', '#mockirc', 'whats up yo?', ''];
+                    args = ['test1', rooms[_.random(0, 2)], 'whats up yo?', ''];
                 }
 
                 for (var i = 0; i < funcs.length; i++) {
