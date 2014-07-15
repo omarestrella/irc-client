@@ -8,8 +8,8 @@
 
 <div class="messages">
     <div class="message-container">
-        {{#each message in roomMessages}}
-            {{irc-message message=message}}
+        {{#each group in messageGroups}}
+            {{irc-message-group group=group}}
         {{/each}}
     </div>
 

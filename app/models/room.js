@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 import EventMixin from '../mixins/event';
 import Message from './message';
+import MessageGroup from './message-group';
 
 var commandRegex = /\/(\w+)\s+(.+)/;
 
@@ -15,12 +16,12 @@ export default Ember.Object.extend(EventMixin, {
     joinMessage: null,
 
     nicks: null,
-    messages: null,
+    messageGroups: null,
 
     isAutoJoinedRoom: false,
 
     setPerRoomProperties: function () {
-        this.set('messages', []);
+        this.set('messageGroups', []);
         this.set('nicks', []);
     }.on('init'),
 
@@ -34,6 +35,8 @@ export default Ember.Object.extend(EventMixin, {
     }.property('channelName'),
 
     storeMessage: function (from, channel, text, message) {
+        var lastMessageGroup = _.last(this.get('messageGroups'));
+
         var msg = Message.create({
             room: this,
             from: from,
@@ -42,7 +45,16 @@ export default Ember.Object.extend(EventMixin, {
             messageData: message
         });
 
-        this.get('messages').pushObject(msg);
+        if (lastMessageGroup && lastMessageGroup.get('from') === from) {
+            lastMessageGroup.get('messages').pushObject(msg);
+        } else {
+            var group = MessageGroup.create({
+                from: from,
+                messages: [msg]
+            });
+
+            this.get('messageGroups').pushObject(group);
+        }
 
         this.sendNotification(msg);
     },
