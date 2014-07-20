@@ -15,8 +15,8 @@ function openMainWindow () {
     mainWindow = new BrowserWindow({
         width: 1024,
         height: 800,
-        'min-width': 800,
-        'min-height': 800
+        'min-width': 640,
+        'min-height': 480
     });
 
     mainWindow.loadUrl('http://localhost:9000');

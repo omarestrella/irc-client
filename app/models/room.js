@@ -74,6 +74,8 @@ export default Ember.Object.extend(EventMixin, {
 
             if (command === 'join') {
                 this.get('connection').join(args);
+            } else if (command == 'leave') {
+                this.get('connection').leave(args);
             }
         } else {
             this.get('client').say(channelName, message);
