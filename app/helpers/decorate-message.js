@@ -6,15 +6,14 @@ function escapeHtml (text) {
     return div.innerHTML;
 }
 
-
 function replaceMentions (text) {
     return text.replace(/(@\w+)/g, '<span class="mention">$1</span>');
 }
 
 function replaceLinks (text) {
-    var link = /(http|ftp|https):\/\/([\w-]+(.[\w-]+)+)([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/gi;
+    var link = /((http|https|ftp)\:\/\/|\bw{3}\.)[a-z0-9\-\.]+\.[a-z]{2,3}(:[a-z0-9]*)?\/?([a-z\u00C0-\u017F0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*/gi;
     return text.replace(link, function (str) {
-        return '<a href="' + str + '">' + str + '</a>';
+        return '<a href="' + str + '" target="_blank">' + str + '</a>';
     });
 }
 

@@ -15,6 +15,12 @@ IRC Client
 * Run Atom for your system:
   - Mac: `./atombinaries/Atom.app/Contents/MacOS/Atom .`
   - Linux: `./atombinaries/atom .`
+  
+## Grunt
+
+* Run local IRC server: `grunt ircServer`
+* Grunt wrapper for ember server: `grunt emberServer`
+* Run IRC and Ember server concurrently: `grunt server`
 
 ## Running Tests
 
@@ -23,5 +29,5 @@ IRC Client
 
 ## Building
 
-* `ember build`
+TODO
 
