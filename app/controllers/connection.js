@@ -194,7 +194,6 @@ export default Ember.Controller.extend(EventMixin, {
 
     leave: function (channelName) {
         var connection = this.get('connection');
-        var channelName = args;
         if (channelName[0] !== '#') {
             channelName = '#' + channelName;
         }
