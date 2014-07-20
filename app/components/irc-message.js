@@ -12,7 +12,6 @@ export default Ember.Component.extend({
     }.on('init'),
 
     linkifyText: function () {
-        this.$('.text').linkify();
         var links = this.$('a');
         this.collectImageUrls(links);
     }.on('didInsertElement'),

@@ -1,9 +1,11 @@
 /* global process */
 
 var app = require('app');
+var ipc = require('ipc');
 var BrowserWindow = require('browser-window');
 
 var mainWindow = null;
+var currentBounce = null;
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
@@ -26,10 +28,19 @@ function openMainWindow () {
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
+
+    mainWindow.on('focus', function () {
+        if (currentBounce) {
+            app.dock.cancelBounce(currentBounce);
+            currentBounce = null;
+        }
+    });
 }
 
 app.on('ready', openMainWindow);
 
 app.on('activate-with-no-open-windows', openMainWindow);
 
-app.commandLine.appendSwitch('enable-transparent-visuals');
+ipc.on('bounce-dock', function () {
+    currentBounce = app.dock.bounce();
+});
