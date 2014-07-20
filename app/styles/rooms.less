@@ -91,20 +91,29 @@
 
         .control {
             position: absolute;
-            top: 4px;
             right: 4px;
             z-index: 10;
 
-            padding: 0 6px;
+            width: 21px;
+            height: 21px;
 
             border-radius: 3px;
 
             color: #000;
+            text-align: center;
             background-color: #fff;
 
             opacity: 0.3;
 
             .clickable();
+
+            &.minimize {
+                top: 4px;
+            }
+
+            &.configure {
+                top: 28px;
+            }
         }
     }
 }

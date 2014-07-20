@@ -4,12 +4,16 @@
     {{/each}}
 
     <div class="spare">
-        <div class="control" {{action "toggleRooms"}}>
+        <div class="control minimize" {{action "toggleRooms"}}>
             {{#if hideRooms}}
                 <i class="ion-chevron-right"></i>
             {{else}}
                 <i class="ion-chevron-left"></i>
             {{/if}}
+        </div>
+
+        <div class="control configure" {{action "configureClient"}}>
+            <i class="ion-gear-a"></i>
         </div>
 
         <div class="info">
