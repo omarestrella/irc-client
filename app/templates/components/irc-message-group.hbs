@@ -2,6 +2,8 @@
     {{from}}
 </div>
 
-{{#each message in messages}}
-    {{irc-message message=message}}
-{{/each}}
+<div class="messages">
+    {{#each message in messages}}
+        {{irc-message message=message}}
+    {{/each}}
+</div>

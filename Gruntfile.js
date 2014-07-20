@@ -1,15 +1,19 @@
 var grunt = require('grunt');
+var shell = require('shelljs');
 
-var package = require('./package.json');
+var packageJson = require('./package.json');
+var config = packageJson.config;
 
 grunt.loadNpmTasks('grunt-exec');
 grunt.loadNpmTasks('grunt-download-atom-shell');
+grunt.loadNpmTasks('grunt-concurrent');
 
 grunt.initConfig({
     exec: {
         buildEmber: {
             command: 'ember build'
         },
+
         moveNodeModules: {
             command: function () {
                 var modules = package['browserModules'];
@@ -21,13 +25,15 @@ grunt.initConfig({
 
                 return cmdList.join('; ');
             }
+        }
+    },
+
+    concurrent: {
+        options: {
+            logConcurrentOutput: true
         },
-        buildNodeWebkit: {
-            command: 'zip -r app.nw index.html package.json assets/ fonts/ node_modules/',
-            cwd: 'dist'
-        },
-        runNodeWebkit: {
-            command: 'lib/node-webkit.app/Contents/MacOS/node-webkit dist/app.nw --remote-debugging-port=9222'
+        server: {
+            tasks: ['ircServer', 'emberServer']
         }
     },
 
@@ -37,5 +43,18 @@ grunt.initConfig({
     }
 });
 
-grunt.registerTask('webkitBuild', ['exec:buildEmber', 'exec:moveNodeModules', 'nodewebkit']);
+grunt.registerTask('ircServer', function () {
+    shell.exec('node node_modules/ircdjs/bin/ircd.js');
+});
+
+grunt.registerTask('emberServer', function () {
+    shell.exec('ember server --port ' + config.emberPort);
+});
+
+grunt.registerTask('devAtomMac', function () {
+    shell.exec('./lib/Atom.app/Contents/MacOS/Atom .');
+});
+
+grunt.registerTask('server', ['concurrent:server']);
+
 grunt.registerTask('build', ['exec:buildEmber', 'exec:moveNodeModules', 'exec:buildNodeWebkit', 'exec:runNodeWebkit']);

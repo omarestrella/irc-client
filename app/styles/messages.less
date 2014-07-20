@@ -5,16 +5,33 @@
     .message-container {
         height: ~"calc(100% - @{messages-height})";
         overflow-y: auto;
+
+        padding: 10px;
     }
 
     .irc-message-group {
+        @name-width: 120px;
 
+        margin-bottom: 8px;
+
+        .name, .messages {
+            position: relative;
+            display: inline-block;
+            float: left;
+        }
+
+        .name {
+            width: @name-width;
+        }
+
+        .messages {
+            width: ~"calc(100% - @{name-width})";
+        }
 
         .message {
             position: relative;
 
-            margin: 6px 0;
-            padding-left: 16px;
+            margin: 0 0 6px 0;
 
             .name {
                 font-size: 0.9em;
@@ -54,7 +71,7 @@
 
                         width: ~"calc(100% - @{width-adjustment})";
                         height: 25px;
-                        
+
                         padding: 0 11px;
                         margin: @margin;
 
@@ -89,7 +106,7 @@
 
     .text-box {
         position: absolute;
-        bottom: 0 + @titlebar-height;
+        bottom: 0;
 
         width: 100%;
         height: @textbox-height;
