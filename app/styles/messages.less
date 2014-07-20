@@ -29,25 +29,27 @@
         }
 
         .message {
+            @time-width: 100px;
+
             position: relative;
 
             margin: 0 0 6px 0;
 
-            .name {
+            .text, .time {
+                position: relative;
+                float: left;
+                display: inline-block;
+            }
+
+            .time {
                 font-size: 0.9em;
-                font-weight: bold;
-
-                .time {
-                    font-size: 0.9em;
-                    font-weight: normal;
-                    color: @black-60;
-
-                    padding-left: 16px;
-                }
+                font-weight: normal;
+                color: @black-60;
             }
 
             .text {
-                padding-left: 4px;
+                width: ~"calc(100% - @{time-width})";
+                padding: 0 0 4px 4px;
             }
 
             .images {

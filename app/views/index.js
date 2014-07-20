@@ -29,7 +29,8 @@ export default Ember.View.extend({
     scrollDownOnMessage: function () {
         var container = this.$('.message-container');
         if (container) {
-            var scrollPosition = container.scrollTop() + container.height();
+            var padding = 20;
+            var scrollPosition = container.scrollTop() + container.height() + padding;
             var scrollHeight = container.prop('scrollHeight');
             var following = scrollPosition === scrollHeight;
 

@@ -14,6 +14,6 @@ export default Ember.Object.extend({
     }.on('init'),
 
     time: function () {
-        return moment(this.get('timestamp')).format('LLL');
+        return moment(this.get('timestamp')).format('LT');
     }.property('timestamp')
 });

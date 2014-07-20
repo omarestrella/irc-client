@@ -16,11 +16,14 @@ export default Ember.Object.extend(EventMixin, {
     joinMessage: null,
 
     nicks: null,
+
+    messages: null,
     messageGroups: null,
 
     isAutoJoinedRoom: false,
 
     setPerRoomProperties: function () {
+        this.set('messages', []);
         this.set('messageGroups', []);
         this.set('nicks', []);
     }.on('init'),
@@ -56,6 +59,7 @@ export default Ember.Object.extend(EventMixin, {
             this.get('messageGroups').pushObject(group);
         }
 
+        this.get('messages').pushObject(msg);
         this.sendNotification(msg);
     },
 
