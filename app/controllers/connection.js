@@ -193,12 +193,11 @@ export default Ember.Controller.extend(EventMixin, {
     },
 
     leave: function (channelName) {
-        var connection = this.get('connection');
         if (channelName[0] !== '#') {
             channelName = '#' + channelName;
         }
-        var room = connection.get('rooms').findBy(
+        var room = this.get('rooms').findBy(
                 'channelName', channelName);
-        connection.leaveRoom(room);
+        this.leaveRoom(room);
     }
 });
