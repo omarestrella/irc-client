@@ -32,6 +32,8 @@
 
         .name {
             width: @name-width;
+
+            .text-truncate();
         }
 
         .messages {
@@ -65,9 +67,12 @@
             }
 
             .images {
-                overflow: hidden;
+                position: relative;
 
+                margin-top: 24px;
                 min-height: 28px;
+
+                overflow: hidden;
 
                 .image {
                     position: relative;
