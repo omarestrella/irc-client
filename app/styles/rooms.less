@@ -50,22 +50,61 @@
         .room {
             opacity: 0;
         }
+
+        .spare {
+            .info {
+                opacity: 0;
+            }
+        }
     }
 
-    .control {
+    .spare {
         position: absolute;
-        left: 4px;
-        bottom: 2px;
+        bottom: 0;
 
-        padding: 0 6px;
+        width: 100%;
+        height: @textbox-height;
 
-        border-radius: 3px;
+        background: darken(@background-dark, 4%);
+        border-top: 1px solid darken(@background-dark, 6%);
 
-        color: #000;
-        background-color: #fff;
+        .info {
+            padding: 6px;
 
-        opacity: 0.3;
+            opacity: 1;
 
-        .clickable();
+            -webkit-transition: opacity 0.3s;
+
+            h6 {
+                margin: 0;
+                padding: 0;
+
+                small {
+                    font-size: 90%;
+                }
+            }
+
+            .status {
+                margin-top: 4px;
+            }
+        }
+
+        .control {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            z-index: 10;
+
+            padding: 0 6px;
+
+            border-radius: 3px;
+
+            color: #000;
+            background-color: #fff;
+
+            opacity: 0.3;
+
+            .clickable();
+        }
     }
 }
