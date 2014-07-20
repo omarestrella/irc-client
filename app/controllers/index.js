@@ -11,6 +11,8 @@ export default Ember.Controller.extend({
     activeRoom: null,
     currentMessage: null,
 
+    hideRooms: false,
+
     actions: {
         setActiveRoom: function (room) {
             var serverRoom = this.get('serverRoom');
@@ -38,6 +40,10 @@ export default Ember.Controller.extend({
 
                 this.set('currentMessage', '');
             }
+        },
+
+        toggleRooms: function () {
+            this.toggleProperty('hideRooms');
         }
     },
 

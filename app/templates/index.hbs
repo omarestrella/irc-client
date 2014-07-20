@@ -1,12 +1,20 @@
-<div class="rooms">
-    {{irc-room room=connection.serverRoom target=controller}}
+<div {{bind-attr class=":sidebar :rooms hideRooms:hide-sidebar:"}}>
+    <div class="control" {{action "toggleRooms"}}>
+        {{#if hideRooms}}
+            <i class="ion-chevron-right"></i>
+        {{else}}
+            <i class="ion-chevron-left"></i>
+        {{/if}}
+    </div>
+
+    {{!irc-room room=connection.serverRoom target=controller}}
 
     {{#each room in rooms}}
         {{irc-room room=room target=controller}}
     {{/each}}
 </div>
 
-<div class="messages">
+<div {{bind-attr class=":messages hideRooms:rooms-hidden: hideRoster:roster-hidden:"}}>
     <div class="message-container">
         {{#each group in messageGroups}}
             {{irc-message-group group=group}}
@@ -18,7 +26,7 @@
     </div>
 </div>
 
-<div class="roster">
+<div {{bind-attr class=":sidebar :roster hideRoster:hide-sidebar"}}>
     {{#each nickname in roomNicknames}}
         <div class="nickname">
             {{nickname}}

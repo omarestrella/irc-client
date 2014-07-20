@@ -9,13 +9,21 @@
     background: @background-dark;
     border-right: 1px solid lighten(@background-dark, 4%);
 
+    overflow: hidden;
+
     overflow-y: auto;
+
+    -webkit-transition: width 0.3s;
 
     .room {
         padding: 8px;
 
         border-top: 1px solid @light-border-color;
         border-bottom: 1px solid @dark-border-color;
+
+        opacity: 1;
+
+        -webkit-transition: opacity 0.3s;
 
         &:hover {
             cursor: pointer;
@@ -28,5 +36,36 @@
             border-top: 1px solid @light-border-color;
             background: lighten(@background-dark, 8%);
         }
+    }
+
+    &:hover {
+        .control {
+            opacity: 1;
+        }
+    }
+
+    &.hide-sidebar {
+        width: @room-hidden-width;
+
+        .room {
+            opacity: 0;
+        }
+    }
+
+    .control {
+        position: absolute;
+        left: 4px;
+        bottom: 2px;
+
+        padding: 0 6px;
+
+        border-radius: 3px;
+
+        color: #000;
+        background-color: #fff;
+
+        opacity: 0.3;
+
+        .clickable();
     }
 }
