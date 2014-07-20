@@ -52,6 +52,7 @@ export default Ember.Object.extend(EventMixin, {
             lastMessageGroup.get('messages').pushObject(msg);
         } else {
             var group = MessageGroup.create({
+                room: this,
                 from: from,
                 messages: [msg]
             });

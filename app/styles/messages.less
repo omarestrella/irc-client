@@ -5,14 +5,12 @@
     .message-container {
         height: ~"calc(100% - @{messages-height})";
         overflow-y: auto;
-
-        padding: 10px;
     }
 
     .irc-message-group {
         @name-width: 120px;
 
-        padding: 8px 0;
+        padding: 8px;
 
         overflow: hidden;
 
@@ -20,6 +18,10 @@
 
         &:last-of-type {
             border-bottom-width: 0;
+        }
+
+        &.you {
+            background-color: @background-light;
         }
 
         .name, .messages {
