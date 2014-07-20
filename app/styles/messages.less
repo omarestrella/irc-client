@@ -12,7 +12,15 @@
     .irc-message-group {
         @name-width: 120px;
 
-        margin-bottom: 8px;
+        padding: 8px 0;
+
+        overflow: hidden;
+
+        border-bottom: 1px solid @black-20;
+
+        &:last-of-type {
+            border-bottom-width: 0;
+        }
 
         .name, .messages {
             position: relative;
@@ -35,6 +43,8 @@
 
             margin: 0 0 6px 0;
 
+            overflow: hidden;
+
             .text, .time {
                 position: relative;
                 float: left;
@@ -49,7 +59,7 @@
 
             .text {
                 width: ~"calc(100% - @{time-width})";
-                padding: 0 0 4px 4px;
+                padding: 0 0 0 4px;
             }
 
             .images {
