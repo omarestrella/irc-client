@@ -54,6 +54,7 @@ grunt.registerTask('emberServer', function () {
 });
 
 grunt.registerTask('devAtomMac', function () {
+    process.env['irc_development'] = true;
     shell.exec('./lib/Atom.app/Contents/MacOS/Atom .');
 });
 

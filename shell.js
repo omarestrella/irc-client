@@ -1,4 +1,4 @@
-/* global process */
+/* global process, __dirname */
 
 var app = require('app');
 var ipc = require('ipc');
@@ -21,9 +21,13 @@ function openMainWindow () {
         'min-height': 800
     });
 
-    mainWindow.loadUrl('http://localhost:9000');
+    if (process.env['irc_development']) {
+        mainWindow.loadUrl('http://localhost:9000');
+        mainWindow.toggleDevTools();
+    } else {
+        mainWindow.loadUrl(__dirname + '/index.html');
+    }
 
-    mainWindow.toggleDevTools();
 
     mainWindow.on('closed', function () {
         mainWindow = null;
