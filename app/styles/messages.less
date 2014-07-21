@@ -59,7 +59,7 @@
         }
 
         .message {
-            @time-width: 100px;
+            @time-width: 50px;
 
             position: relative;
 
@@ -81,7 +81,8 @@
 
             .text {
                 width: ~"calc(100% - @{time-width})";
-                padding: 0 0 0 4px;
+                padding: 0 12px 0 4px;
+                word-break: break-word;
             }
 
             .images {
