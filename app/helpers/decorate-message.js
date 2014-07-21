@@ -12,9 +12,9 @@ function replaceMentions (text) {
 
 function replaceLinks (text) {
     var link = /((http|https|ftp)\:\/\/|\bw{3}\.)[a-z0-9\-\.]+\.[a-z]{2,3}(:[a-z0-9]*)?\/?([a-z\u00C0-\u017F0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*/gi;
-    return text.replace(link, function (str, start) {
+    return text.replace(link, function (str) {
         var href = str;
-        if (start !== 'http://' || start !== 'https://') {
+        if (href.indexOf('http') !== 0) {
             href = 'http://' + str;
         }
 
