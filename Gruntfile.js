@@ -16,7 +16,7 @@ grunt.initConfig({
 
         moveNodeModules: {
             command: function () {
-                var modules = package['browserModules'];
+                var modules = packageJson['browserModules'];
                 var cmdPattern = 'rsync -aqR node_modules/{lib} dist/';
                 var cmdList = ['mkdir -p dist/node_modules'];
                 for (var i = 0; i < modules.length; i++) {
@@ -39,7 +39,9 @@ grunt.initConfig({
 
     'download-atom-shell': {
         version: '0.13.3',
-        outputDir: 'atombinaries'
+        outputDir: 'release',
+        downloadDir: 'cache',
+        rebuild: false
     }
 });
 
@@ -55,6 +57,18 @@ grunt.registerTask('devAtomMac', function () {
     shell.exec('./lib/Atom.app/Contents/MacOS/Atom .');
 });
 
+grunt.registerTask('copyFilesMac', function () {
+    var atomDir = 'release/Atom.app/Contents/Resources/';
+    shell.rm('-rf', atomDir + 'default_app');
+    shell.exec('rsync -aqR dist/ release/Atom.app/Contents/Resources/');
+    shell.mv(atomDir + 'dist', atomDir + 'default_app');
+});
+
 grunt.registerTask('server', ['concurrent:server']);
 
-grunt.registerTask('build', ['exec:buildEmber', 'exec:moveNodeModules', 'exec:buildNodeWebkit', 'exec:runNodeWebkit']);
+grunt.registerTask('build', [
+    'exec:buildEmber',
+    'exec:moveNodeModules',
+    'download-atom-shell',
+    'copyFilesMac'
+]);

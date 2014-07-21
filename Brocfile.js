@@ -6,6 +6,12 @@ var pickFiles = require('broccoli-static-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 var fileMover = require('broccoli-file-mover');
 
+var atom = pickFiles('.', {
+    srcDir: '/',
+    files: ['package.json', 'shell.js'],
+    destDir: '/'
+});
+
 var app = new EmberApp();
 
 app.import('vendor/bootstrap/dist/css/bootstrap.css');
@@ -34,4 +40,4 @@ var fontAssets = pickFiles('vendor/ionicons/fonts', {
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-module.exports = mergeTrees([app.toTree(), fontAssets]);
+module.exports = mergeTrees([app.toTree(), atom, fontAssets]);

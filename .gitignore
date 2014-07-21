@@ -1,3 +1,5 @@
+npm-debug.log
+
 .idea/
 
 dist/
@@ -8,6 +10,8 @@ vendor/
 
 webkitbuilds/
 atombinaries/
+cache/
+release/
 
 lib/node-webkit
 !lib/Atom.app
