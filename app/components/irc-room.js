@@ -47,6 +47,7 @@ export default Ember.Component.extend({
             window.addEventListener('contextmenu', function (event) {
                 if (Ember.$(event.target).attr('id') === self.$().attr('id')) {
                     event.preventDefault();
+                    event.stopPropagation();
                     menu.popup(remote.getCurrentWindow());
                 }
             }, false);
