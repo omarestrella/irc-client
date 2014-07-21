@@ -25,7 +25,7 @@ function openMainWindow () {
         mainWindow.loadUrl('http://localhost:9000');
         mainWindow.toggleDevTools();
     } else {
-        mainWindow.loadUrl(__dirname + '/index.html');
+        mainWindow.loadUrl('file://' + __dirname + '/index.html');
     }
 
 

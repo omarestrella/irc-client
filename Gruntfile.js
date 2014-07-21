@@ -25,6 +25,10 @@ grunt.initConfig({
 
                 return cmdList.join('; ');
             }
+        },
+
+        cleanBuildDir: {
+            command: 'rm -rf release'
         }
     },
 
@@ -70,6 +74,7 @@ grunt.registerTask('server', ['concurrent:server']);
 grunt.registerTask('build', [
     'exec:buildEmber',
     'exec:moveNodeModules',
+    'exec:cleanBuildDir',
     'download-atom-shell',
     'copyFilesMac'
 ]);
