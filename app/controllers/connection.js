@@ -6,6 +6,7 @@ import Room from '../models/room';
 import MockIRC from '../services/mock_irc';
 
 var irc = require('irc');
+var remote = require('remote');
 
 if (!irc) {
     irc = MockIRC.create({});
@@ -36,23 +37,36 @@ export default Ember.Controller.extend(EventMixin, {
     }.observes('client'),
 
     connectToServer: function () {
+        var client, app;
         var self = this;
         var server = this.get('server');
         var nickname = this.get('nickname');
         var defaultChannels = this.get('defaultChannels');
 
-        var client = new irc.Client(server, nickname, {
-            channels: defaultChannels,
-            autoConnect: false,
-            floodProtection: false
-        });
+        if (window.isDesktop) {
+            app = remote.require('app');
+            if (app.ircClient) {
+                client = app.ircClient;
+            }
+        }
 
-        this.set('client', client);
+        if (!client) {
+            client = new irc.Client(server, nickname, {
+                channels: defaultChannels,
+                autoConnect: false,
+                floodProtection: false
+            });
+        }
 
         return new Ember.RSVP.Promise(function (resolve) {
             client.connect(function (data) {
                 Client.set('connected', true);
 
+                if (app) {
+                    app.ircClient = client;
+                }
+
+                self.set('client', client);
                 self.initializeServerRoom();
 
                 resolve(data);

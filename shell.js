@@ -7,6 +7,8 @@ var BrowserWindow = require('browser-window');
 var mainWindow = null;
 var currentBounce = null;
 
+app.ircClient = null;
+
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
         app.quit();

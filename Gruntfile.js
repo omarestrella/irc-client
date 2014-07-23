@@ -1,3 +1,5 @@
+/* global process */
+
 var grunt = require('grunt');
 var shell = require('shelljs');
 
@@ -11,7 +13,11 @@ grunt.loadNpmTasks('grunt-concurrent');
 grunt.initConfig({
     exec: {
         buildEmber: {
-            command: 'ember build'
+            command: function () {
+                process.env['irc_deployment'] = true;
+
+                return 'ember build';
+            }
         },
 
         moveNodeModules: {
@@ -54,6 +60,7 @@ grunt.registerTask('ircServer', function () {
 });
 
 grunt.registerTask('emberServer', function () {
+    process.env['irc_development'] = true;
     shell.exec('ember server --port ' + config.emberPort);
 });
 
