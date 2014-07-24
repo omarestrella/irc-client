@@ -17,14 +17,12 @@ export default Ember.View.extend({
         });
     }.on('didInsertElement'),
 
-    setServerRoomAsActive: function () {
-        Ember.run.scheduleOnce('afterRender', this, function () {
-            var rooms = this.get('controller.rooms');
-            if (rooms) {
-                this.get('controller').send('setActiveRoom', rooms.objectAt(0));
-            }
-        });
-    }.on('didInsertElement'),
+    changeActiveRoom: function () {
+        var rooms = this.get('controller.rooms');
+        if (rooms && rooms.length) {
+            this.get('controller').send('setActiveRoom', rooms.objectAt(0));
+        }
+    }.observes('controller.rooms.[]'),
 
     scrollDownOnMessage: function () {
         var container = this.$('.message-container');

@@ -41,7 +41,8 @@ export default Ember.Controller.extend(EventMixin, {
 
     connectToServer: function () {
         var client, app, options;
-        var server, nickname, defaultChannels;
+        var server, nickname;
+        var defaultChannels = this.get('defaultChannels');
 
         var self = this;
         var prefs = this.get('controllers.preferences');
@@ -51,12 +52,13 @@ export default Ember.Controller.extend(EventMixin, {
             if (data) {
                 this.setProperties(data);
             }
-
-            var channels = prefs.get('clientSettings.autoJoinRooms');
-            this.set('defaultChannels', channels || []);
         }
 
-        defaultChannels = this.get('defaultChannels');
+        var channels = prefs.get('clientSettings.autoJoinRooms');
+        if (!defaultChannels && channels) {
+            defaultChannels = channels;
+        }
+
         server = this.get('server');
         nickname = this.get('nickname');
 
@@ -163,6 +165,15 @@ export default Ember.Controller.extend(EventMixin, {
         }
     }.listener('message#'),
 
+    updateRoomTopic: function (channel, topic /*, nick, message */) {
+        var room = this.get('rooms').findBy('channelName', channel);
+        if (room) {
+            Ember.Logger.info('Updating topic in:', channel, topic);
+
+            room.set('topic', topic);
+        }
+    }.listener('topic'),
+
     handleInitialServerConnection: function (message) {
         Ember.run.scheduleOnce('render', this, function () {
             var room = this.get('serverRoom');
@@ -253,8 +264,13 @@ export default Ember.Controller.extend(EventMixin, {
         if (channelName[0] !== '#') {
             channelName = '#' + channelName;
         }
-        var room = this.get('rooms').findBy(
-                'channelName', channelName);
+
+        var room = this.get('rooms').findBy('channelName', channelName);
         this.leaveRoom(room);
+    },
+
+    changeTopic: function (room, topic) {
+        var channel = room.get('channelName');
+        this.get('client').send('topic', channel, topic);
     }
 });

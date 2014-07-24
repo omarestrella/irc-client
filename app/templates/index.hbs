@@ -35,6 +35,16 @@
 </div>
 
 <div {{bind-attr class=":messages hideRooms:rooms-hidden: hideRoster:roster-hidden:"}}>
+    {{#if activeRoom}}
+        <div class="topic">
+            {{#if activeRoom.topic}}
+                <span>{{activeRoom.topic}}</span>
+            {{else}}
+                <em>No topic set</em>
+            {{/if}}
+        </div>
+    {{/if}}
+
     <div class="message-container">
         {{#each group in messageGroups}}
             {{irc-message-group group=group}}

@@ -17,6 +17,7 @@ export default Ember.Object.extend(EventMixin, {
     joinMessage: null,
 
     nicks: null,
+    topic: null,
 
     messages: null,
     messageGroups: null,
@@ -81,6 +82,12 @@ export default Ember.Object.extend(EventMixin, {
                 }
 
                 this.get('connection').leave(args);
+            } else if (command === 'topic') {
+                if (!args) {
+                    return null;
+                }
+
+                this.get('connection').changeTopic(this, args);
             }
         } else {
             this.get('client').say(channelName, message);

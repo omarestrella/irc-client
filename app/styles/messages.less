@@ -20,8 +20,19 @@
 
     }
 
+    .topic {
+        height: @topic-height;
+
+        padding: 6px 0 0 8px;
+
+        font-size: 12px;
+        background: @black-10;
+
+        border-bottom: 1px solid @black-20;
+    }
+
     .message-container {
-        height: ~"calc(100% - @{messages-height})";
+        height: ~"calc(100% - @{messages-height-offset})";
         overflow-y: auto;
     }
 
