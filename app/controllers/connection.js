@@ -215,5 +215,14 @@ export default Ember.Controller.extend(EventMixin, {
         this.get('client').part(channelName, 'Leaving.', function () {
 
         });
+    },
+
+    leave: function (channelName) {
+        if (channelName[0] !== '#') {
+            channelName = '#' + channelName;
+        }
+        var room = this.get('rooms').findBy(
+                'channelName', channelName);
+        this.leaveRoom(room);
     }
 });
