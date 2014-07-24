@@ -84,18 +84,9 @@ grunt.registerTask('devAtomMac', function () {
     shell.exec('./lib/Atom.app/Contents/MacOS/Atom .');
 });
 
-grunt.registerTask('downloadAtomShell', function () {
-    var downloadCmd = ['curl -o', './cache/atom-shell.zip', '-L', ATOM_LOCATION];
-    var extractCmd = ['unzip -o ./cache/atom-shell.zip -d ./cache/atom-shell'];
-
-    shell.exec('mkdir -p cache');
-    shell.exec(downloadCmd.join(' '));
-    shell.exec(extractCmd.join(''));
-});
-
-grunt.registerTask('moveAtomShell', function () {
-    shell.exec('mkdir -p release');
-    shell.mv('./cache/atom-shell/Atom.app', 'release/IRC.app');
+grunt.registerTask('copyAtomShell', function () {
+    shell.exec('mkdir -p release/IRC.app');
+    shell.cp('-R', './lib/Atom.app/*', 'release/IRC.app/');
 });
 
 grunt.registerTask('copyFiles', function () {
@@ -117,8 +108,8 @@ grunt.registerTask('build', [
     'exec:buildEmber',
     'exec:moveNodeModules',
     'exec:cleanBuildDir',
-    'downloadAtomShell',
-    'moveAtomShell',
+    'downloadDependencies',
+    'copyAtomShell',
     'copyFiles',
     'compressDirectory'
 ]);
