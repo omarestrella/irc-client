@@ -1,0 +1,18 @@
+machine:
+    node:
+        version: 0.10.26
+
+general:
+    artifacts:
+        - "release"
+
+dependencies:
+    override:
+        - "npm install"
+        - "bower install"
+
+deployment:
+    master:
+        branch: "master"
+        commands:
+            - "grunt build"
