@@ -80,14 +80,19 @@ grunt.registerTask('downloadAtomShell', function () {
 
 grunt.registerTask('moveAtomShell', function () {
     shell.exec('mkdir -p release');
-    shell.mv('./cache/atom-shell/Atom.app', 'release/Atom.app');
+    shell.mv('./cache/atom-shell/Atom.app', 'release/IRC.app');
 });
 
 grunt.registerTask('copyFiles', function () {
     var atomDir = 'release/Atom.app/Contents/Resources/';
     shell.rm('-rf', atomDir + 'default_app');
-    shell.exec('rsync -aqR dist/ release/Atom.app/Contents/Resources/');
+    shell.exec('rsync -aqR dist/ release/IRC.app/Contents/Resources/');
     shell.mv(atomDir + 'dist', atomDir + 'default_app');
+});
+
+grunt.registerTask('compressDirectory', function () {
+    shell.cd('release');
+    shell.exec('zip -r IRC.zip IRC.app');
 });
 
 grunt.registerTask('server', ['concurrent:server']);
@@ -98,5 +103,6 @@ grunt.registerTask('build', [
     'exec:cleanBuildDir',
     'downloadAtomShell',
     'moveAtomShell',
-    'copyFiles'
+    'copyFiles',
+    'compressDirectory'
 ]);
