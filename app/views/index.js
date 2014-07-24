@@ -39,5 +39,16 @@ export default Ember.View.extend({
                 }
             });
         }
-    }.observes('controller.activeRoom.messages.[]')
+    }.observes('controller.activeRoom.messages.[]'),
+
+    keyUp: function (event) {
+        if (keystroke.codeToString(event.keyCode) === 'UP_ARROW' && Ember.$(event.target).is('textarea')) {
+            var messages = this.get('controller.activeRoom.messages');
+            var last = _.last(messages);
+            var textarea = this.$('textarea');
+            if (last && !textarea.val()) {
+                textarea.val(last.get('text'));
+            }
+        }
+    }
 });

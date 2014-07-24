@@ -26,6 +26,7 @@ app.import('vendor/ionicons/css/ionicons.css');
 
 app.import('vendor/moment/moment.js');
 app.import('vendor/lodash/dist/lodash.js');
+app.import('vendor/keystroke.js/keystroke.js');
 
 var fontAssets = pickFiles('vendor/ionicons/fonts', {
     srcDir: '/',
