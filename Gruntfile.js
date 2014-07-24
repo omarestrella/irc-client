@@ -16,7 +16,7 @@ grunt.initConfig({
             command: function () {
                 process.env['irc_deployment'] = true;
 
-                return 'ember build';
+                return './node_modules/ember-cli/bin/ember build';
             }
         },
 
