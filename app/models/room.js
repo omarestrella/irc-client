@@ -4,7 +4,7 @@ import EventMixin from '../mixins/event';
 import Message from './message';
 import MessageGroup from './message-group';
 
-var commandRegex = /\/(\w+)\s+(.*)/;
+var commandRegex = /^\/(\w+)\s*(.*)/;
 
 var Notification = require('node-notifier');
 var ipc = require('ipc');
@@ -75,14 +75,17 @@ export default Ember.Object.extend(EventMixin, {
 
             if (command === 'join') {
                 this.get('connection').join(args);
-            } else if ((command == 'leave') || (command == 'part')) {
+            } else if ((command === 'leave') || (command === 'part')) {
+                if (!args) {
+                    args = channelName;
+                }
+
                 this.get('connection').leave(args);
             }
         } else {
             this.get('client').say(channelName, message);
             this.storeMessage(nick, channelName, message);
         }
-
     },
 
     sendNotification: function (message) {

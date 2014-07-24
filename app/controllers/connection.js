@@ -7,9 +7,11 @@ import MockIRC from '../services/mock_irc';
 
 var irc = require('irc');
 var remote = require('remote');
+//var irc = remote.require('irc');
 
 if (!irc) {
     irc = MockIRC.create({});
+    remote = {};
 }
 
 export default Ember.Controller.extend(EventMixin, {
@@ -18,6 +20,7 @@ export default Ember.Controller.extend(EventMixin, {
     server: null,
     nickname: null,
     defaultChannels: null,
+    autoConnect: false,
 
     serverRoom: null,
 
@@ -29,45 +32,66 @@ export default Ember.Controller.extend(EventMixin, {
         var client = this.get('client');
         if (client) {
             client.addListener('error', function (message) {
-                console.error('IRC Error: ', message);
+                console.info('IRC Error: ', message);
             });
 
             this.attachListeners();
         }
-    }.observes('client'),
+    }.observesImmediately('client'),
 
     connectToServer: function () {
-        var client, app;
+        var client, app, options;
+        var server, nickname, defaultChannels;
+
         var self = this;
-        var server = this.get('server');
-        var nickname = this.get('nickname');
-        var defaultChannels = this.get('defaultChannels');
+        var prefs = this.get('controllers.preferences');
+
+        if (prefs.get('clientSettings.autoConnect')) {
+            var data = prefs.get('clientSettings.autoConnectData');
+            if (data) {
+                this.setProperties(data);
+            }
+
+            var channels = prefs.get('clientSettings.autoJoinRooms');
+            this.set('defaultChannels', channels || []);
+        }
+
+        defaultChannels = this.get('defaultChannels');
+        server = this.get('server');
+        nickname = this.get('nickname');
 
         if (window.isDesktop) {
             app = remote.require('app');
-            if (app.ircClient) {
-                client = app.ircClient;
+
+            if (app.ircClient && app.ircClient.opt) {
+                options = app.ircClient.opt;
+                options = _.extend({}, options, {
+                    channels: defaultChannels
+                });
             }
         }
 
-        if (!client) {
-            client = new irc.Client(server, nickname, {
-                channels: defaultChannels,
-                autoConnect: false,
-                floodProtection: false
-            });
-        }
+        client = new irc.Client(server, nickname, options || {
+            channels: defaultChannels,
+            autoConnect: false,
+            floodProtection: false
+        });
+
+        self.set('client', client);
 
         return new Ember.RSVP.Promise(function (resolve) {
+            if (app) {
+                app.ircClient = client;
+            }
+
             client.connect(function (data) {
                 Client.set('connected', true);
 
-                if (app) {
-                    app.ircClient = client;
-                }
-
-                self.set('client', client);
                 self.initializeServerRoom();
+
+                if (prefs.get('clientSettings.autoConnect')) {
+                    self.saveConnectionDetails();
+                }
 
                 resolve(data);
             });
@@ -181,6 +205,14 @@ export default Ember.Controller.extend(EventMixin, {
         });
 
         this.set('serverRoom', room);
+    },
+
+    saveConnectionDetails: function () {
+        var prefs = this.get('controllers.preferences');
+        prefs.setPreference('clientSettings.autoConnectData', {
+            nickname: this.get('nickname'),
+            server: this.get('server')
+        });
     },
 
     join: function (args) {

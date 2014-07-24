@@ -12,10 +12,12 @@ export default Ember.Route.extend({
             var remote = require('remote');
             var app = remote.require('app');
             var connection = this.controllerFor('connection');
-            if (app.ircClient) {
+            var prefs = this.controllerFor('preferences');
+            if (app.ircClient || prefs.get('clientSettings.autoConnect')) {
                 return connection.connectToServer();
             }
         }
+
         if (!Client.get('connected')) {
             this.transitionTo('login');
         }

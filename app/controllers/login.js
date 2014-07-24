@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
     server: 'irc.freenode.net',
     nickname: null,
     channels: '',
+    autoConnect: false,
 
     connecting: false,
 
@@ -16,6 +17,7 @@ export default Ember.Controller.extend({
             var server = this.get('server');
             var nickname = this.get('nickname');
             var channels = this.get('channels');
+            var autoConnect = this.get('autoConnect');
 
             var channelsArr = channels.split(',');
             var autoJoinRooms = prefs.get('clientSettings.autoJoinRooms');
@@ -33,7 +35,8 @@ export default Ember.Controller.extend({
             connection.setProperties({
                 server: server,
                 nickname: nickname,
-                defaultChannels: channelsArr
+                defaultChannels: channelsArr,
+                autoConnect: autoConnect
             });
 
             this.set('connecting', true);
@@ -59,5 +62,10 @@ export default Ember.Controller.extend({
         var nickname = this.get('nickname');
 
         return Ember.isEmpty(server) || Ember.isEmpty(nickname);
-    }.property('server', 'nickname')
+    }.property('server', 'nickname'),
+
+    autoConnectChanged: function () {
+        var prefs = this.get('controllers.preferences');
+        prefs.setPreference('clientSettings.autoConnect', this.get('autoConnect'));
+    }.observesImmediately('autoConnect')
 });

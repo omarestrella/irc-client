@@ -39,7 +39,7 @@ export default Ember.Component.extend({
             menu.append(new MenuItem({
                 label: 'Auto-join Room',
                 type: 'checkbox',
-                checked: this.get('isAutoJoinedRoom'),
+                checked: this.get('room.isAutoJoinedRoom'),
                 click: _.bind(self.setAutoJoin, self)
             }));
             menu.append(new MenuItem({ label: 'Leave Room', click: _.bind(self.leaveRoom, self) }));

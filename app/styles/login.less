@@ -1,8 +1,15 @@
+@width: 400px;
+
 .login-view {
     .login {
         height: 350px;
+        width: @width;
+
+        flex-basis: @width;
+        -webkit-flex-basis: @width;
 
         margin-top: 40px;
+        padding: 16px;
 
         background-color: #fff;
 
@@ -11,6 +18,23 @@
 
         .row {
             margin-bottom: 12px;
+        }
+
+        .setting {
+            display: block;
+
+            margin-bottom: 4px;
+
+            overflow: hidden;
+
+            input, label {
+                float: left;
+            }
+
+            label {
+                padding-left: 6px;
+                font-weight: normal;
+            }
         }
     }
 }

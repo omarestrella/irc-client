@@ -3,26 +3,34 @@
         <h2>Login</h2>
 
         <div class="row center-hand">
-            <div class="column-11-hand">
+            <div class="column-12-hand">
                 {{input value=server placeholder="Server" classNames="form-control"}}
             </div>
         </div>
 
         <div class="row center-hand">
-            <div class="column-11-hand">
+            <div class="column-12-hand">
                 {{input value=nickname placeholder="Username" classNames="form-control"}}
             </div>
         </div>
 
         <div class="row center-hand">
-            <div class="column-11-hand">
+            <div class="column-12-hand">
                 {{input value=channels placeholder="Channels" classNames="form-control"}}
             </div>
         </div>
 
         <div class="row center-hand">
-            <div class="column-11-hand">
-                <div class="row end-hand">
+            <div class="column-12-hand">
+                <div class="row">
+                    <div class="column-9-hand">
+                        <div class="setting">
+                            {{input type=checkbox checked=autoConnect}}
+
+                            <label>Auto Connect?</label>
+                        </div>
+                    </div>
+
                     <div class="column-3-hand">
                         <button type="submit" class="btn btn-primary" {{bind-attr disabled=connectDisabled}}>
                             {{#if connecting}}
