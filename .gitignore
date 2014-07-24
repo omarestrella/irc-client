@@ -13,6 +13,5 @@ atombinaries/
 cache/
 release/
 
-lib/node-webkit
-!lib/Atom.app
+lib/
 

@@ -13,7 +13,8 @@
   "scripts": {
     "start": "ember server",
     "build": "ember build",
-    "test": "ember test"
+    "test": "ember test",
+    "postinstall": "grunt downloadDependencies"
   },
   "repository": "https://github.com/stefanpenner/ember-cli",
   "engines": {

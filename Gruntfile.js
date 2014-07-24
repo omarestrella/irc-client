@@ -1,5 +1,6 @@
 /* global process */
 
+var fs = require('fs');
 var grunt = require('grunt');
 var shell = require('shelljs');
 
@@ -9,6 +10,8 @@ var config = packageJson.config;
 grunt.loadNpmTasks('grunt-exec');
 grunt.loadNpmTasks('grunt-download-atom-shell');
 grunt.loadNpmTasks('grunt-concurrent');
+
+var ATOM_LOCATION = 'https://github.com/atom/atom-shell/releases/download/v0.14.0/atom-shell-v0.14.0-darwin-x64.zip';
 
 grunt.initConfig({
     exec: {
@@ -55,6 +58,18 @@ grunt.initConfig({
     }
 });
 
+grunt.registerTask('downloadDependencies', function () {
+    if (!fs.existsSync('./lib/Atom.app')) {
+        var downloadCmd = ['curl -o', './lib/atom-shell.zip', '-L', ATOM_LOCATION];
+        var extractCmd = ['unzip -o ./lib/atom-shell.zip -d ./lib/'];
+
+        shell.exec('mkdir -p lib');
+        shell.exec(downloadCmd.join(' '));
+        shell.exec(extractCmd.join(''));
+        shell.rm('./lib/atom-shell.zip');
+    }
+});
+
 grunt.registerTask('ircServer', function () {
     shell.exec('node node_modules/ircdjs/bin/ircd.js');
 });
@@ -70,8 +85,7 @@ grunt.registerTask('devAtomMac', function () {
 });
 
 grunt.registerTask('downloadAtomShell', function () {
-    var location = 'https://github.com/atom/atom-shell/releases/download/v0.14.0/atom-shell-v0.14.0-darwin-x64.zip';
-    var downloadCmd = ['curl -o', './cache/atom-shell.zip', '-L', location];
+    var downloadCmd = ['curl -o', './cache/atom-shell.zip', '-L', ATOM_LOCATION];
     var extractCmd = ['unzip -o ./cache/atom-shell.zip -d ./cache/atom-shell'];
 
     shell.exec('mkdir -p cache');
