@@ -11,8 +11,8 @@ dependencies:
         - "npm install"
         - "bower install"
 
-deployment:
-    master:
-        branch: "master"
-        commands:
-            - "grunt build"
+test:
+    override:
+        - "echo 'Not testing...'"
+    post:
+        - "grunt build"
