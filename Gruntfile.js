@@ -74,6 +74,7 @@ grunt.registerTask('downloadAtomShell', function () {
     var downloadCmd = ['curl -o', './cache/atom-shell.zip', '-L', location];
     var extractCmd = ['unzip -o ./cache/atom-shell.zip -d ./cache/atom-shell'];
 
+    shell.exec('mkdir -p cache');
     shell.exec(downloadCmd.join(' '));
     shell.exec(extractCmd.join(''));
 });
