@@ -18,9 +18,7 @@ app.on('window-all-closed', function () {
 function openMainWindow () {
     mainWindow = new BrowserWindow({
         width: 1024,
-        height: 800,
-        'min-width': 800,
-        'min-height': 800
+        height: 800
     });
 
     if (process.env['irc_development']) {
