@@ -1,10 +1,22 @@
-/* global require, module */
+/* global require, module, process */
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var pickFiles = require('broccoli-static-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 var fileMover = require('broccoli-file-mover');
+
+var trees = [];
+
+if (process.env['irc_deployment']) {
+    var atom = pickFiles('.', {
+        srcDir: '/',
+        files: ['package.json', 'shell.js'],
+        destDir: '/'
+    });
+
+    trees.push(atom);
+}
 
 var app = new EmberApp();
 
@@ -21,6 +33,8 @@ var fontAssets = pickFiles('vendor/ionicons/fonts', {
     destDir: '/fonts'
 });
 
+trees.push(fontAssets);
+
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //
@@ -34,4 +48,6 @@ var fontAssets = pickFiles('vendor/ionicons/fonts', {
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-module.exports = mergeTrees([app.toTree(), fontAssets]);
+trees.push(app.toTree());
+
+module.exports = mergeTrees(trees);

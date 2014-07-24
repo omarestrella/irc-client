@@ -1,9 +1,13 @@
-/* global process */
+/* global process, __dirname */
 
 var app = require('app');
+var ipc = require('ipc');
 var BrowserWindow = require('browser-window');
 
 var mainWindow = null;
+var currentBounce = null;
+
+app.ircClient = null;
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
@@ -14,17 +18,26 @@ app.on('window-all-closed', function () {
 function openMainWindow () {
     mainWindow = new BrowserWindow({
         width: 1024,
-        height: 800,
-        'min-width': 640,
-        'min-height': 480
+        height: 800
     });
 
-    mainWindow.loadUrl('http://localhost:9000');
+    if (process.env['irc_development']) {
+        mainWindow.loadUrl('http://localhost:9000');
+        mainWindow.toggleDevTools();
+    } else {
+        mainWindow.loadUrl('file://' + __dirname + '/index.html');
+    }
 
-    mainWindow.toggleDevTools();
 
     mainWindow.on('closed', function () {
         mainWindow = null;
+    });
+
+    mainWindow.on('focus', function () {
+        if (currentBounce) {
+            app.dock.cancelBounce(currentBounce);
+            currentBounce = null;
+        }
     });
 }
 
@@ -32,4 +45,6 @@ app.on('ready', openMainWindow);
 
 app.on('activate-with-no-open-windows', openMainWindow);
 
-app.commandLine.appendSwitch('enable-transparent-visuals');
+ipc.on('bounce-dock', function () {
+    currentBounce = app.dock.bounce();
+});

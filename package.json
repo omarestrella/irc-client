@@ -24,7 +24,8 @@
   "browserModules": [
     "irc",
     "node-notifier",
-    "moment"
+    "moment",
+    "jquery"
   ],
   "devDependencies": {
     "body-parser": "^1.2.0",

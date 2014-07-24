@@ -6,6 +6,7 @@ import Room from '../models/room';
 import MockIRC from '../services/mock_irc';
 
 var irc = require('irc');
+var remote = require('remote');
 
 if (!irc) {
     irc = MockIRC.create({});
@@ -36,23 +37,36 @@ export default Ember.Controller.extend(EventMixin, {
     }.observes('client'),
 
     connectToServer: function () {
+        var client, app;
         var self = this;
         var server = this.get('server');
         var nickname = this.get('nickname');
         var defaultChannels = this.get('defaultChannels');
 
-        var client = new irc.Client(server, nickname, {
-            channels: defaultChannels,
-            autoConnect: false,
-            floodProtection: false
-        });
+        if (window.isDesktop) {
+            app = remote.require('app');
+            if (app.ircClient) {
+                client = app.ircClient;
+            }
+        }
 
-        this.set('client', client);
+        if (!client) {
+            client = new irc.Client(server, nickname, {
+                channels: defaultChannels,
+                autoConnect: false,
+                floodProtection: false
+            });
+        }
 
         return new Ember.RSVP.Promise(function (resolve) {
             client.connect(function (data) {
                 Client.set('connected', true);
 
+                if (app) {
+                    app.ircClient = client;
+                }
+
+                self.set('client', client);
                 self.initializeServerRoom();
 
                 resolve(data);
@@ -60,12 +74,14 @@ export default Ember.Controller.extend(EventMixin, {
         });
     },
 
-    initializeRoom: function (channel, nickname, message) {
+    initializeRoom: function (channel, nick, message) {
         var prefs = this.get('controllers.preferences');
         var autoJoinRooms = prefs.get('clientSettings.autoJoinRooms');
         var currentRoom = this.get('rooms').findBy('channelName', channel);
 
         if (!currentRoom) {
+            Ember.Logger.info('Joining:', channel);
+
             var autoJoined = _.contains(autoJoinRooms, channel);
 
             var room = Room.create({
@@ -77,9 +93,13 @@ export default Ember.Controller.extend(EventMixin, {
 
             room.set('isAutoJoinedRoom', autoJoined);
 
-            Ember.Logger.info('Joining:', channel);
-
             this.get('rooms').addObject(room);
+
+            currentRoom = room;
+        }
+
+        if (this.get('client.nick') !== nick) {
+            currentRoom.get('nicks').addObject(nick);
         }
     }.listener('join'),
 
@@ -96,12 +116,17 @@ export default Ember.Controller.extend(EventMixin, {
         }
     }.listener('names'),
 
-    userLeftRoom: function (channel, nick, reason, message) {
+    userLeftRoom: function (channel, nick /*, reason, message */) {
         var room = this.get('rooms').findBy('channelName', channel);
         if (room) {
             Ember.Logger.info('User leaving room:', channel);
 
-            this.get('rooms').removeObject(room);
+
+            if (this.get('client.nick') === nick) {
+                this.get('rooms').removeObject(room);
+            } else {
+                room.get('nicks').removeObject(nick);
+            }
         }
     }.listener('part'),
 

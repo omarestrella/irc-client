@@ -18,10 +18,10 @@ export default Ember.View.extend({
     }.on('didInsertElement'),
 
     setServerRoomAsActive: function () {
-        Ember.run.scheduleOnce('render', this, function () {
-            var serverRoom = this.get('controller.serverRoom');
-            if (serverRoom) {
-                this.get('controller').send('setActiveRoom', serverRoom);
+        Ember.run.scheduleOnce('afterRender', this, function () {
+            var rooms = this.get('controller.rooms');
+            if (rooms) {
+                this.get('controller').send('setActiveRoom', rooms.objectAt(0));
             }
         });
     }.on('didInsertElement'),

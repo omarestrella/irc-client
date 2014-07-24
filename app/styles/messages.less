@@ -2,6 +2,24 @@
     width: ~"calc(100% - @{messages-offset})";
     height: 100%;
 
+    -webkit-transition: width 0.3s;
+
+    &.rooms-hidden {
+        @offset: @messages-offset - @room-width + @room-hidden-width;
+
+        width: ~"calc(100% - @{offset})";
+    }
+
+    &.roster-hidden {
+        @offset: @messages-offset - @roster-width;
+
+        width: ~"calc(100% - @{offset})";
+    }
+
+    &.roster-hidden.rooms-hidden {
+
+    }
+
     .message-container {
         height: ~"calc(100% - @{messages-height})";
         overflow-y: auto;
@@ -41,7 +59,7 @@
         }
 
         .message {
-            @time-width: 100px;
+            @time-width: 55px;
 
             position: relative;
 
@@ -63,7 +81,8 @@
 
             .text {
                 width: ~"calc(100% - @{time-width})";
-                padding: 0 0 0 4px;
+                padding: 0 12px 0 4px;
+                word-break: break-word;
             }
 
             .images {
@@ -117,6 +136,7 @@
 
                     &.expanded img {
                         display: block;
+                        width: 100%;
                     }
                 }
             }

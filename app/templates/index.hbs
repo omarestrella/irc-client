@@ -1,12 +1,40 @@
-<div class="rooms">
-    {{irc-room room=connection.serverRoom target=controller}}
-
+<div {{bind-attr class=":sidebar :rooms hideRooms:hide-sidebar:"}}>
     {{#each room in rooms}}
         {{irc-room room=room target=controller}}
     {{/each}}
+
+    <div class="spare">
+        <div class="control minimize" {{action "toggleRooms"}}>
+            {{#if hideRooms}}
+                <i class="ion-chevron-right"></i>
+            {{else}}
+                <i class="ion-chevron-left"></i>
+            {{/if}}
+        </div>
+
+        <div class="control configure" {{action "configureClient"}}>
+            <i class="ion-gear-a"></i>
+        </div>
+
+        <div class="info">
+            <div class="server">
+                <h6>
+                    Server <br />
+                    <small>{{connection.server}}</small>
+                </h6>
+            </div>
+
+            <div class="status">
+                <h6>
+                    Status <br />
+                    <small>connected</small>
+                </h6>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="messages">
+<div {{bind-attr class=":messages hideRooms:rooms-hidden: hideRoster:roster-hidden:"}}>
     <div class="message-container">
         {{#each group in messageGroups}}
             {{irc-message-group group=group}}
@@ -18,7 +46,7 @@
     </div>
 </div>
 
-<div class="roster">
+<div {{bind-attr class=":sidebar :roster hideRoster:hide-sidebar"}}>
     {{#each nickname in roomNicknames}}
         <div class="nickname">
             {{nickname}}

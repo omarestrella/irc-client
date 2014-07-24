@@ -7,6 +7,7 @@ import MessageGroup from './message-group';
 var commandRegex = /\/(\w+)\s+(.*)/;
 
 var Notification = require('node-notifier');
+var ipc = require('ipc');
 
 export default Ember.Object.extend(EventMixin, {
     connection: null,
@@ -89,7 +90,11 @@ export default Ember.Object.extend(EventMixin, {
             return null;
         }
 
-        if (message.get('from') === this.get('client.nick')) {
+        var from = message.get('from');
+        var mentions = message.get('mentions');
+        var nickname = this.get('client.nick');
+
+        if (from === nickname) {
             return null;
         }
 
@@ -100,6 +105,7 @@ export default Ember.Object.extend(EventMixin, {
         Ember.Logger.info('Sending notification for message:', message);
 
         var notifier = new Notification();
+
         notifier.notify({
             title: message.get('from'),
             subtitle: this.get('channelName'),
@@ -109,5 +115,9 @@ export default Ember.Object.extend(EventMixin, {
                 Ember.Logger.error('Error sending notification:', err);
             }
         });
+
+        if (_.contains(mentions, '@' + nickname) && window.isDesktop) {
+            ipc.send('bounce-dock');
+        }
     }
 });
